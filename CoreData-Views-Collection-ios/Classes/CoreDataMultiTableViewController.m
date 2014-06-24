@@ -8,7 +8,7 @@
 
 #import <CocoaLumberjack/DDLog.h>
 #import "CoreDataMultiTableViewController.h"
-#import "Constants.h"
+#import "CoreDataViewsCollectionLogging.h"
 
 @interface CoreDataMultiTableViewController ()
 

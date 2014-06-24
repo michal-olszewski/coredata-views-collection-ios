@@ -21,7 +21,6 @@
 // This will also automatically be called if you change the fetchedResultsController @property.
 - (void)performFetch;
 
-- (NSPredicate *)addProjectFilterToPredicate:(NSPredicate *)predicate;
 - (void)waitForUpdateEndAndPerformBlock: (void (^)())block;
 - (void)scrollToTopAnimated:(BOOL) animated;
 - (void)reloadData;

@@ -7,7 +7,7 @@
 
 #import <CocoaLumberjack/DDLog.h>
 #import "CoreDataTableViewController.h"
-#import "Constants.h"
+#import "CoreDataViewsCollectionLogging.h"
 
 @interface CoreDataTableViewController ()
 @property (nonatomic) dispatch_queue_t waitQueue;

@@ -7,7 +7,7 @@
 
 #import <CocoaLumberjack/DDLog.h>
 #import "CoreDataCollectionViewController.h"
-#import "Constants.h"
+#import "CoreDataViewsCollectionLogging.h"
 
 @interface CoreDataCollectionViewController ()
 

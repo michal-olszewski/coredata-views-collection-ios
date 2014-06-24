@@ -8,8 +8,8 @@
 
 #import <CocoaLumberjack/DDLog.h>
 #import "CoreDataViewController.h"
-#import "Constants.h"
-#import "Synchronizer.h"
+#import "CoreDataViewsCollectionLogging.h"
+//#import "Synchronizer.h"
 
 @interface CoreDataViewController ()
 @property (nonatomic) dispatch_queue_t waitQueue;
@@ -111,18 +111,6 @@
             }
         }];
     }
-}
-
-- (NSPredicate *)addProjectFilterToPredicate:(NSPredicate *)predicate {
-    if ([Synchronizer sharedSynchronizer].currentProjectId > 0) {
-        NSPredicate *currentProjectPredicate = [NSPredicate predicateWithFormat:@"project.idNumber == %f", [Synchronizer sharedSynchronizer].currentProjectId];
-        if (predicate != nil) {
-            return [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate, currentProjectPredicate]];
-        } else {
-            return currentProjectPredicate;
-        }
-    }
-    else return predicate;
 }
 
 #pragma mark - UITableViewDataSource

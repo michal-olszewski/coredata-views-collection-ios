@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55043F09195B6B1F005543BC /* CoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043EFF195B6B1F005543BC /* CoreDataCollectionViewController.m */; };
+		55043F0A195B6B1F005543BC /* CoreDataMultiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F01195B6B1F005543BC /* CoreDataMultiTableViewController.m */; };
+		55043F0B195B6B1F005543BC /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F03195B6B1F005543BC /* CoreDataTableViewController.m */; };
+		55043F0C195B6B1F005543BC /* CoreDataViewCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F05195B6B1F005543BC /* CoreDataViewCollectionController.m */; };
+		55043F0D195B6B1F005543BC /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F07195B6B1F005543BC /* CoreDataViewController.m */; };
 		55AEDC1E195B695D00711B85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC1D195B695D00711B85 /* Foundation.framework */; };
-		55AEDC23195B695D00711B85 /* CoreData_Views_Collection_ios.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55AEDC22195B695D00711B85 /* CoreData_Views_Collection_ios.h */; };
-		55AEDC25195B695D00711B85 /* CoreData_Views_Collection_ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AEDC24195B695D00711B85 /* CoreData_Views_Collection_ios.m */; };
 		55AEDC2C195B695D00711B85 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC2B195B695D00711B85 /* XCTest.framework */; };
 		55AEDC2D195B695D00711B85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC1D195B695D00711B85 /* Foundation.framework */; };
 		55AEDC2F195B695D00711B85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC2E195B695D00711B85 /* UIKit.framework */; };
@@ -36,18 +39,26 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				55AEDC23195B695D00711B85 /* CoreData_Views_Collection_ios.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		55043EFE195B6B1F005543BC /* CoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionViewController.h; path = Classes/CoreDataCollectionViewController.h; sourceTree = SOURCE_ROOT; };
+		55043EFF195B6B1F005543BC /* CoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionViewController.m; path = Classes/CoreDataCollectionViewController.m; sourceTree = SOURCE_ROOT; };
+		55043F00195B6B1F005543BC /* CoreDataMultiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataMultiTableViewController.h; path = Classes/CoreDataMultiTableViewController.h; sourceTree = SOURCE_ROOT; };
+		55043F01195B6B1F005543BC /* CoreDataMultiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataMultiTableViewController.m; path = Classes/CoreDataMultiTableViewController.m; sourceTree = SOURCE_ROOT; };
+		55043F02195B6B1F005543BC /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = Classes/CoreDataTableViewController.h; sourceTree = SOURCE_ROOT; };
+		55043F03195B6B1F005543BC /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = Classes/CoreDataTableViewController.m; sourceTree = SOURCE_ROOT; };
+		55043F04195B6B1F005543BC /* CoreDataViewCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewCollectionController.h; path = Classes/CoreDataViewCollectionController.h; sourceTree = SOURCE_ROOT; };
+		55043F05195B6B1F005543BC /* CoreDataViewCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataViewCollectionController.m; path = Classes/CoreDataViewCollectionController.m; sourceTree = SOURCE_ROOT; };
+		55043F06195B6B1F005543BC /* CoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewController.h; path = Classes/CoreDataViewController.h; sourceTree = SOURCE_ROOT; };
+		55043F07195B6B1F005543BC /* CoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataViewController.m; path = Classes/CoreDataViewController.m; sourceTree = SOURCE_ROOT; };
+		55043F08195B6B1F005543BC /* CoreDataViewsCollectionLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewsCollectionLogging.h; path = Classes/CoreDataViewsCollectionLogging.h; sourceTree = SOURCE_ROOT; };
 		55AEDC1A195B695D00711B85 /* libCoreData-Views-Collection-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCoreData-Views-Collection-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AEDC1D195B695D00711B85 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55AEDC21195B695D00711B85 /* CoreData-Views-Collection-ios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreData-Views-Collection-ios-Prefix.pch"; sourceTree = "<group>"; };
-		55AEDC22195B695D00711B85 /* CoreData_Views_Collection_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreData_Views_Collection_ios.h; sourceTree = "<group>"; };
-		55AEDC24195B695D00711B85 /* CoreData_Views_Collection_ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData_Views_Collection_ios.m; sourceTree = "<group>"; };
 		55AEDC2A195B695D00711B85 /* CoreData-Views-Collection-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CoreData-Views-Collection-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AEDC2B195B695D00711B85 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		55AEDC2E195B695D00711B85 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -81,6 +92,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55043EF8195B6A91005543BC /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				55043EFE195B6B1F005543BC /* CoreDataCollectionViewController.h */,
+				55043EFF195B6B1F005543BC /* CoreDataCollectionViewController.m */,
+				55043F00195B6B1F005543BC /* CoreDataMultiTableViewController.h */,
+				55043F01195B6B1F005543BC /* CoreDataMultiTableViewController.m */,
+				55043F02195B6B1F005543BC /* CoreDataTableViewController.h */,
+				55043F03195B6B1F005543BC /* CoreDataTableViewController.m */,
+				55043F04195B6B1F005543BC /* CoreDataViewCollectionController.h */,
+				55043F05195B6B1F005543BC /* CoreDataViewCollectionController.m */,
+				55043F06195B6B1F005543BC /* CoreDataViewController.h */,
+				55043F07195B6B1F005543BC /* CoreDataViewController.m */,
+				55043F08195B6B1F005543BC /* CoreDataViewsCollectionLogging.h */,
+			);
+			name = Classes;
+			path = ../../Classes;
+			sourceTree = "<group>";
+		};
 		55AEDC11195B695D00711B85 = {
 			isa = PBXGroup;
 			children = (
@@ -114,8 +144,7 @@
 		55AEDC1F195B695D00711B85 /* CoreData-Views-Collection-ios */ = {
 			isa = PBXGroup;
 			children = (
-				55AEDC22195B695D00711B85 /* CoreData_Views_Collection_ios.h */,
-				55AEDC24195B695D00711B85 /* CoreData_Views_Collection_ios.m */,
+				55043EF8195B6A91005543BC /* Classes */,
 				55AEDC20195B695D00711B85 /* Supporting Files */,
 			);
 			path = "CoreData-Views-Collection-ios";
@@ -228,7 +257,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55AEDC25195B695D00711B85 /* CoreData_Views_Collection_ios.m in Sources */,
+				55043F0A195B6B1F005543BC /* CoreDataMultiTableViewController.m in Sources */,
+				55043F09195B6B1F005543BC /* CoreDataCollectionViewController.m in Sources */,
+				55043F0B195B6B1F005543BC /* CoreDataTableViewController.m in Sources */,
+				55043F0D195B6B1F005543BC /* CoreDataViewController.m in Sources */,
+				55043F0C195B6B1F005543BC /* CoreDataViewCollectionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +442,7 @@
 				55AEDC3F195B695D00711B85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55AEDC40195B695D00711B85 /* Build configuration list for PBXNativeTarget "CoreData-Views-Collection-iosTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +451,7 @@
 				55AEDC42195B695D00711B85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

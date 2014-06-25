@@ -9,12 +9,11 @@
 #import <CocoaLumberjack/DDLog.h>
 #import "CoreDataViewController.h"
 #import "CoreDataViewsCollectionLogging.h"
-//#import "Synchronizer.h"
 
 @interface CoreDataViewController ()
-@property (nonatomic) dispatch_queue_t waitQueue;
-@property (nonatomic, strong) NSArray *sectionElementsCountCache;
-@property (nonatomic) int sectionCountCache;
+@property(nonatomic) dispatch_queue_t waitQueue;
+@property(nonatomic, strong) NSArray *sectionElementsCountCache;
+@property(nonatomic) int sectionCountCache;
 @end
 
 @implementation CoreDataViewController
@@ -33,22 +32,24 @@
 #pragma mark - helpers
 
 - (dispatch_queue_t)waitQueue {
-    if (!_waitQueue){
-        _waitQueue = dispatch_queue_create("com.geniebelt.cd.wait", nil);
+    if (!_waitQueue) {
+        _waitQueue = dispatch_queue_create("com.coredata-views-collection-ios.cd.wait", nil);
     }
     return _waitQueue;
 }
 
-- (void)scrollToTopAnimated:(BOOL) animated{
+- (void)scrollToTopAnimated:(BOOL)animated {
     BOOL canScroll = NO;
     if (([self numberOfSectionsInTableView:self.tableView] > 0)) {
         canScroll = ([self tableView:self.tableView numberOfRowsInSection:0] > 0);
     }
-    if (canScroll) [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    if (canScroll) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    }
 }
 
-- (void)waitForUpdateEndAndPerformBlock: (void (^)())block{
-    if(self.beganUpdates > 0) {
+- (void)waitForUpdateEndAndPerformBlock:(void (^)())block {
+    if (self.beganUpdates > 0) {
         self.suspendAutomaticTrackingOfChangesInManagedObjectContext = YES;
         dispatch_async(self.waitQueue, ^{
             while (self.beganUpdates > 0) {
@@ -64,7 +65,7 @@
     }
 }
 
-- (void)reloadData{
+- (void)reloadData {
     [self waitForUpdateEndAndPerformBlock:^{
         [self.tableView reloadData];
     }];
@@ -83,7 +84,9 @@
             [self.tableView reloadData];
         }];
     } else {
-        if (self.debug) DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        if (self.debug) {
+            DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        }
         [self.tableView reloadData];
     }
 
@@ -106,7 +109,9 @@
             if (newFetchedResultsController) {
                 [self performFetch];
             } else {
-                if (self.debug) DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+                if (self.debug) {
+                    DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+                }
                 [self.tableView reloadData];
             }
         }];
@@ -116,14 +121,14 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.suspendAutomaticTrackingOfChangesInManagedObjectContext){
+    if (self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
         return self.sectionCountCache;
     }
     return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.suspendAutomaticTrackingOfChangesInManagedObjectContext){
+    if (self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
         return [self.sectionElementsCountCache[(NSUInteger) section] integerValue];
     }
     return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects];
@@ -198,7 +203,7 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     if (self.beganUpdates == 1) {
         [self.tableView endUpdates];
-        if (self.suspendAutomaticTrackingOfChangesInManagedObjectContext){
+        if (self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
             self.sectionElementsCountCache = [self sectionElementsCountArray];
             self.sectionCountCache = [self.sectionElementsCountCache count];
         }
@@ -206,10 +211,10 @@
     self.beganUpdates--;
 }
 
--(NSArray *)sectionElementsCountArray{
+- (NSArray *)sectionElementsCountArray {
     NSInteger sections = [[self.fetchedResultsController sections] count];
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:(NSUInteger) sections];
-    for(int section = 0; section < sections; section++){
+    for (int section = 0; section < sections; section++) {
         [result addObject:[NSNumber numberWithInteger:[[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects]]];
     }
     return [NSArray arrayWithArray:result];
@@ -224,7 +229,7 @@
 - (void)setSuspendAutomaticTrackingOfChangesInManagedObjectContext:(BOOL)suspend {
     if (suspend) {
         _suspendAutomaticTrackingOfChangesInManagedObjectContext = YES;
-        if (self.beganUpdates == 0){
+        if (self.beganUpdates == 0) {
             self.sectionElementsCountCache = [self sectionElementsCountArray];
             self.sectionCountCache = [self.sectionElementsCountCache count];
         }

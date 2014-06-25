@@ -1,8 +1,9 @@
 //
-//  CoreDataTableViewController.m
+//  CoreDataViewController.h
+//  QuickInspect
 //
-//  Created for Stanford CS193p Fall 2011.
-//  Copyright 2011 Stanford University. All rights reserved.
+//  Created by Kacper Kawecki on 12/19/12.
+//  Copyright (c) 2012 Kacper Kawecki. All rights reserved.
 //
 
 #import <CocoaLumberjack/DDLog.h>
@@ -70,21 +71,23 @@
             DDLogError(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
         }
     } else {
-        if (self.debug) DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        if (self.debug) {
+            DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        }
     }
     [self.collectionView reloadData];
 }
 
-- (void)setFetchedResultsController:(NSFetchedResultsController *)newfrc {
-    NSFetchedResultsController *oldfrc = _fetchedResultsController;
-    if (newfrc != oldfrc) {
-        oldfrc.delegate = nil;
-        _fetchedResultsController = newfrc;
-        newfrc.delegate = self;
-        if ((!self.title || [self.title isEqualToString:oldfrc.fetchRequest.entity.name]) && (!self.navigationController || !self.navigationItem.title)) {
-            self.title = newfrc.fetchRequest.entity.name;
+- (void)setFetchedResultsController:(NSFetchedResultsController *)newFetchedResultsController {
+    NSFetchedResultsController *oldFetchedResultsController = _fetchedResultsController;
+    if (newFetchedResultsController != oldFetchedResultsController) {
+        oldFetchedResultsController.delegate = nil;
+        _fetchedResultsController = newFetchedResultsController;
+        newFetchedResultsController.delegate = self;
+        if ((!self.title || [self.title isEqualToString:oldFetchedResultsController.fetchRequest.entity.name]) && (!self.navigationController || !self.navigationItem.title)) {
+            self.title = newFetchedResultsController.fetchRequest.entity.name;
         }
-        if (newfrc) {
+        if (newFetchedResultsController != nil) {
             [self performFetch];
         }
     }
@@ -103,15 +106,17 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (self.additionalCellAtTheBegining) {
         if (section == 0) {
-            if ([[self.fetchedResultsController sections] count] == 0)
+            if ([[self.fetchedResultsController sections] count] == 0) {
                 return 1;
+            }
             NSInteger count = [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
             return count;
         }
     }
     if (self.additionalCellAtTheEnd) {
-        if ([[self.fetchedResultsController sections] count] == 0)
+        if ([[self.fetchedResultsController sections] count] == 0) {
             return 1;
+        }
         if (section == ([self numberOfSectionsInCollectionView:collectionView] - 1)) {
             return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
         }
@@ -139,7 +144,6 @@
                 }
                 [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
                 break;
-
             case NSFetchedResultsChangeDelete:
                 if (self.additionalCellAtTheEnd && sectionIndex == 0) {
                     break;
@@ -166,7 +170,7 @@
             if (indexPath && indexPath.section == 0) {
                 indexPath = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section];
             }
-            if (newIndexPath && newIndexPath.section == 0) {
+            if (indexPath && newIndexPath && newIndexPath.section == 0) {
                 newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item + 1 inSection:indexPath.section];
             }
         }
@@ -191,7 +195,9 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    if (self.beganUpdates) self.beganUpdates = NO;
+    if (self.beganUpdates) {
+        self.beganUpdates = NO;
+    }
 }
 
 - (void)endSuspensionOfUpdatesDueToContextChanges {

@@ -1,19 +1,9 @@
 //
-//  CoreDataTableViewController.h
+//  CoreDataViewController.h
+//  QuickInspect
 //
-//  Created for Stanford CS193p Fall 2011.
-//  Copyright 2011 Stanford University. All rights reserved.
-//
-// This class mostly just copies the code from NSFetchedResultsController's documentation page
-//   into a subclass of UITableViewController.
-//
-// Just subclass this and set the fetchedResultsController.
-// The only UITableViewDataSource method you'll HAVE to implement is tableView:cellForRowAtIndexPath:.
-// And you can use the NSFetchedResultsController method objectAtIndexPath: to do it.
-//
-// Remember that once you create an NSFetchedResultsController, you CANNOT modify its @properties.
-// If you want new fetch parameters (predicate, sorting, etc.),
-//  create a NEW NSFetchedResultsController and set this class's fetchedResultsController @property again.
+//  Created by Kacper Kawecki on 12/19/12.
+//  Copyright (c) 2012 Kacper Kawecki. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -31,8 +21,11 @@
 //   since the NSFetchedResultsController will notice and update the table automatically).
 // This will also automatically be called if you change the fetchedResultsController @property.
 - (void)performFetch;
-- (void)waitForUpdateEndAndPerformBlock: (void (^)())block;
-- (void)scrollToTopAnimated:(BOOL) animated;
+
+- (void)waitForUpdateEndAndPerformBlock:(void (^)())block;
+
+- (void)scrollToTopAnimated:(BOOL)animated;
+
 // Turn this on before making any changes in the managed object context that
 //  are a one-for-one result of the user manipulating rows directly in the table view.
 // Such changes cause the context to report them (after a brief delay),

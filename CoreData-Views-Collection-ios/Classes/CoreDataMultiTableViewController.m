@@ -39,7 +39,9 @@
             DDLogError(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
         }
     } else {
-        if (self.debug) DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        if (self.debug) {
+            DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        }
     }
     NSUInteger index = [self.fetchedResultsControllers indexOfObject:fetchedResultsController];
     if (index != NSNotFound && index < [self.tableViews count]) {
@@ -60,11 +62,15 @@
         oldFetchedResultsController.delegate = nil;
         [_fetchedResultsControllers insertObject:newFetchedResultsController atIndex:index];
         newFetchedResultsController.delegate = self;
-        if (newFetchedResultsController) {
-            if (self.debug) DDLogDebug(@"[%@ %@] %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), oldFetchedResultsController ? @"updated" : @"set");
+        if (newFetchedResultsController != nil) {
+            if (self.debug) {
+                DDLogDebug(@"[%@ %@] %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), oldFetchedResultsController != nil ? @"updated" : @"set");
+            }
             [self performFetchForFetchedResultsController:newFetchedResultsController];
         } else {
-            if (self.debug) DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+            if (self.debug) {
+                DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+            }
             UITableView *currentTableView = self.tableViews[index];
             [currentTableView reloadData];
         }
@@ -138,7 +144,6 @@
                 case NSFetchedResultsChangeInsert:
                     [currentTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
                     break;
-
                 case NSFetchedResultsChangeDelete:
                     [currentTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
                     break;

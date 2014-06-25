@@ -64,7 +64,9 @@
             DDLogError(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
         }
     } else {
-        if (self.debug) DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        if (self.debug) {
+            DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        }
     }
     [self.collectionView reloadData];
 }
@@ -78,7 +80,7 @@
         if ((!self.title || [self.title isEqualToString:oldFetchedResultsController.fetchRequest.entity.name]) && (!self.navigationController || !self.navigationItem.title)) {
             self.title = newFetchedResultsController.fetchRequest.entity.name;
         }
-        if (newFetchedResultsController) {
+        if (newFetchedResultsController != nil) {
             [self performFetch];
         }
     }
@@ -97,15 +99,17 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (self.additionalCellAtTheBeginning) {
         if (section == 0) {
-            if ([[self.fetchedResultsController sections] count] == 0)
+            if ([[self.fetchedResultsController sections] count] == 0) {
                 return 1;
+            }
             NSInteger count = [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
             return count;
         }
     }
     if (self.additionalCellAtTheEnd) {
-        if ([[self.fetchedResultsController sections] count] == 0)
+        if ([[self.fetchedResultsController sections] count] == 0) {
             return 1;
+        }
         if (section == ([self numberOfSectionsInCollectionView:collectionView] - 1)) {
             return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
         }
@@ -155,7 +159,7 @@
         if (indexPath && indexPath.section == 0) {
             indexPath = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section];
         }
-        if (newIndexPath && newIndexPath.section == 0) {
+        if (indexPath && newIndexPath && newIndexPath.section == 0) {
             newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item + 1 inSection:indexPath.section];
         }
     }
@@ -177,7 +181,9 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    if (self.beganUpdates) self.beganUpdates = NO;
+    if (self.beganUpdates) {
+        self.beganUpdates = NO;
+    }
 }
 
 - (void)endSuspensionOfUpdatesDueToContextChanges {

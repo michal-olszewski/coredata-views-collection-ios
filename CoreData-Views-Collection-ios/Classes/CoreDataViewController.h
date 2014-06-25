@@ -21,8 +21,10 @@
 // This will also automatically be called if you change the fetchedResultsController @property.
 - (void)performFetch;
 
-- (void)waitForUpdateEndAndPerformBlock: (void (^)())block;
-- (void)scrollToTopAnimated:(BOOL) animated;
+- (void)waitForUpdateEndAndPerformBlock:(void (^)())block;
+
+- (void)scrollToTopAnimated:(BOOL)animated;
+
 - (void)reloadData;
 
 
@@ -39,9 +41,9 @@
 //  and then set it back to NO at the end of your implementation of that method.
 // It is not necessary (in fact, not desirable) to set this during row deletion or insertion
 //  (but definitely for row moves).
-@property (nonatomic) BOOL suspendAutomaticTrackingOfChangesInManagedObjectContext;
-@property (nonatomic) BOOL autoUpdateTitle;
-@property (nonatomic, strong) UITableView *tableView;
+@property(nonatomic) BOOL suspendAutomaticTrackingOfChangesInManagedObjectContext;
+@property(nonatomic) BOOL autoUpdateTitle;
+@property(nonatomic, strong) UITableView *tableView;
 // Set to YES to get some debugging output in the console.
 @property BOOL debug;
 

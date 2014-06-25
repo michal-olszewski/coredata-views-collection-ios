@@ -1,8 +1,9 @@
 //
-//  CoreDataTableViewController.m
+//  CoreDataViewController.h
+//  QuickInspect
 //
-//  Created for Stanford CS193p Fall 2011.
-//  Copyright 2011 Stanford University. All rights reserved.
+//  Created by Kacper Kawecki on 12/19/12.
+//  Copyright (c) 2012 Kacper Kawecki. All rights reserved.
 //
 
 #import <CocoaLumberjack/DDLog.h>
@@ -10,7 +11,7 @@
 #import "CoreDataViewsCollectionLogging.h"
 
 @interface CoreDataTableViewController ()
-@property (nonatomic) dispatch_queue_t waitQueue;
+@property(nonatomic) dispatch_queue_t waitQueue;
 
 @end
 
@@ -30,20 +31,24 @@
 #pragma mark - helpers
 
 - (dispatch_queue_t)waitQueue {
-    if (!_waitQueue){
-        _waitQueue = dispatch_queue_create("com.geniebelt.cd.wait", nil);
+    if (!_waitQueue) {
+        _waitQueue = dispatch_queue_create("com.coredata-views-collection-ios.cd.wait", nil);
     }
     return _waitQueue;
 }
 
-- (void)scrollToTopAnimated:(BOOL) animated{
+- (void)scrollToTopAnimated:(BOOL)animated {
     BOOL canScroll = ([self numberOfSectionsInTableView:self.tableView] > 0);
-    if (canScroll) canScroll = ([self tableView:self.tableView numberOfRowsInSection:0] > 0);
-    if (canScroll) [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    if (canScroll) {
+        canScroll = ([self tableView:self.tableView numberOfRowsInSection:0] > 0);
+    }
+    if (canScroll) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    }
 }
 
-- (void)waitForUpdateEndAndPerformBlock: (void (^)())block{
-    if(self.beganUpdates > 0) {
+- (void)waitForUpdateEndAndPerformBlock:(void (^)())block {
+    if (self.beganUpdates > 0) {
         dispatch_async(self.waitQueue, ^{
             while (self.beganUpdates > 0) {
                 usleep(10);
@@ -62,7 +67,7 @@
 - (void)performFetch {
     if (self.fetchedResultsController) {
         self.suspendAutomaticTrackingOfChangesInManagedObjectContext = YES;
-        [self waitForUpdateEndAndPerformBlock: ^{
+        [self waitForUpdateEndAndPerformBlock:^{
             NSError *error;
             [self.fetchedResultsController performFetch:&error];
             if (error) {
@@ -73,7 +78,9 @@
         }];
 
     } else {
-        if (self.debug) DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        if (self.debug) {
+            DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        }
         [self.tableView reloadData];
     }
 }
@@ -96,7 +103,9 @@
             if (newFetchedResultsController) {
                 [self performFetch];
             } else {
-                if (self.debug) DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+                if (self.debug) {
+                    DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+                }
                 [self.tableView reloadData];
             }
         }];
@@ -130,7 +139,7 @@
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
         [self.tableView beginUpdates];
-        self.beganUpdates ++;
+        self.beganUpdates++;
     }
 }
 
@@ -180,7 +189,9 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    if (self.beganUpdates == 1) [self.tableView endUpdates];
+    if (self.beganUpdates == 1) {
+        [self.tableView endUpdates];
+    }
     self.beganUpdates--;
 }
 

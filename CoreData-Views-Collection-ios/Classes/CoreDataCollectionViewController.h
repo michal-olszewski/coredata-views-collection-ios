@@ -1,3 +1,11 @@
+//
+//  CoreDataViewController.h
+//  QuickInspect
+//
+//  Created by Kacper Kawecki on 12/19/12.
+//  Copyright (c) 2012 Kacper Kawecki. All rights reserved.
+//
+
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 

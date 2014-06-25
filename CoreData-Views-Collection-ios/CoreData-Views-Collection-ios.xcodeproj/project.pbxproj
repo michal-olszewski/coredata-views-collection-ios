@@ -12,6 +12,7 @@
 		55043F0B195B6B1F005543BC /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F03195B6B1F005543BC /* CoreDataTableViewController.m */; };
 		55043F0C195B6B1F005543BC /* CoreDataViewCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F05195B6B1F005543BC /* CoreDataViewCollectionController.m */; };
 		55043F0D195B6B1F005543BC /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F07195B6B1F005543BC /* CoreDataViewController.m */; };
+		55043F0F195B6B8E005543BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55043F0E195B6B8E005543BC /* UIKit.framework */; };
 		55AEDC1E195B695D00711B85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC1D195B695D00711B85 /* Foundation.framework */; };
 		55AEDC2C195B695D00711B85 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC2B195B695D00711B85 /* XCTest.framework */; };
 		55AEDC2D195B695D00711B85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC1D195B695D00711B85 /* Foundation.framework */; };
@@ -56,6 +57,7 @@
 		55043F06195B6B1F005543BC /* CoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewController.h; path = Classes/CoreDataViewController.h; sourceTree = SOURCE_ROOT; };
 		55043F07195B6B1F005543BC /* CoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataViewController.m; path = Classes/CoreDataViewController.m; sourceTree = SOURCE_ROOT; };
 		55043F08195B6B1F005543BC /* CoreDataViewsCollectionLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewsCollectionLogging.h; path = Classes/CoreDataViewsCollectionLogging.h; sourceTree = SOURCE_ROOT; };
+		55043F0E195B6B8E005543BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		55AEDC1A195B695D00711B85 /* libCoreData-Views-Collection-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCoreData-Views-Collection-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AEDC1D195B695D00711B85 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55AEDC21195B695D00711B85 /* CoreData-Views-Collection-ios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreData-Views-Collection-ios-Prefix.pch"; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55043F0F195B6B8E005543BC /* UIKit.framework in Frameworks */,
 				55AEDC44195B698E00711B85 /* CoreData.framework in Frameworks */,
 				55AEDC1E195B695D00711B85 /* Foundation.framework in Frameworks */,
 			);
@@ -133,6 +136,7 @@
 		55AEDC1C195B695D00711B85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55043F0E195B6B8E005543BC /* UIKit.framework */,
 				55AEDC43195B698E00711B85 /* CoreData.framework */,
 				55AEDC1D195B695D00711B85 /* Foundation.framework */,
 				55AEDC2B195B695D00711B85 /* XCTest.framework */,

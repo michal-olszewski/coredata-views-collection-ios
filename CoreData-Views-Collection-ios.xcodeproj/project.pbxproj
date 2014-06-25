@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55043F09195B6B1F005543BC /* CoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043EFF195B6B1F005543BC /* CoreDataCollectionViewController.m */; };
-		55043F0A195B6B1F005543BC /* CoreDataMultiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F01195B6B1F005543BC /* CoreDataMultiTableViewController.m */; };
-		55043F0B195B6B1F005543BC /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F03195B6B1F005543BC /* CoreDataTableViewController.m */; };
-		55043F0C195B6B1F005543BC /* CoreDataViewCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F05195B6B1F005543BC /* CoreDataViewCollectionController.m */; };
-		55043F0D195B6B1F005543BC /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F07195B6B1F005543BC /* CoreDataViewController.m */; };
+		0F6448E9350F41E8B97127E0 /* libPods-CoreData-Views-Collection-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7B41BC25FB4708B8A0EAC5 /* libPods-CoreData-Views-Collection-ios.a */; };
 		55043F0F195B6B8E005543BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55043F0E195B6B8E005543BC /* UIKit.framework */; };
+		55043F1B195B7120005543BC /* CoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F11195B7120005543BC /* CoreDataCollectionViewController.m */; };
+		55043F1C195B7120005543BC /* CoreDataMultiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F13195B7120005543BC /* CoreDataMultiTableViewController.m */; };
+		55043F1D195B7120005543BC /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F15195B7120005543BC /* CoreDataTableViewController.m */; };
+		55043F1E195B7120005543BC /* CoreDataViewCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F17195B7120005543BC /* CoreDataViewCollectionController.m */; };
+		55043F1F195B7120005543BC /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F19195B7120005543BC /* CoreDataViewController.m */; };
 		55AEDC1E195B695D00711B85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC1D195B695D00711B85 /* Foundation.framework */; };
 		55AEDC2C195B695D00711B85 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC2B195B695D00711B85 /* XCTest.framework */; };
 		55AEDC2D195B695D00711B85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC1D195B695D00711B85 /* Foundation.framework */; };
@@ -46,18 +47,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		55043EFE195B6B1F005543BC /* CoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionViewController.h; path = Classes/CoreDataCollectionViewController.h; sourceTree = SOURCE_ROOT; };
-		55043EFF195B6B1F005543BC /* CoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionViewController.m; path = Classes/CoreDataCollectionViewController.m; sourceTree = SOURCE_ROOT; };
-		55043F00195B6B1F005543BC /* CoreDataMultiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataMultiTableViewController.h; path = Classes/CoreDataMultiTableViewController.h; sourceTree = SOURCE_ROOT; };
-		55043F01195B6B1F005543BC /* CoreDataMultiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataMultiTableViewController.m; path = Classes/CoreDataMultiTableViewController.m; sourceTree = SOURCE_ROOT; };
-		55043F02195B6B1F005543BC /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = Classes/CoreDataTableViewController.h; sourceTree = SOURCE_ROOT; };
-		55043F03195B6B1F005543BC /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = Classes/CoreDataTableViewController.m; sourceTree = SOURCE_ROOT; };
-		55043F04195B6B1F005543BC /* CoreDataViewCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewCollectionController.h; path = Classes/CoreDataViewCollectionController.h; sourceTree = SOURCE_ROOT; };
-		55043F05195B6B1F005543BC /* CoreDataViewCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataViewCollectionController.m; path = Classes/CoreDataViewCollectionController.m; sourceTree = SOURCE_ROOT; };
-		55043F06195B6B1F005543BC /* CoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewController.h; path = Classes/CoreDataViewController.h; sourceTree = SOURCE_ROOT; };
-		55043F07195B6B1F005543BC /* CoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataViewController.m; path = Classes/CoreDataViewController.m; sourceTree = SOURCE_ROOT; };
-		55043F08195B6B1F005543BC /* CoreDataViewsCollectionLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewsCollectionLogging.h; path = Classes/CoreDataViewsCollectionLogging.h; sourceTree = SOURCE_ROOT; };
+		38E49AB326F94CF69B25799B /* Pods-CoreData-Views-Collection-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreData-Views-Collection-ios.xcconfig"; path = "Pods/Pods-CoreData-Views-Collection-ios.xcconfig"; sourceTree = "<group>"; };
 		55043F0E195B6B8E005543BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		55043F10195B7120005543BC /* CoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionViewController.h"; sourceTree = SOURCE_ROOT; };
+		55043F11195B7120005543BC /* CoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionViewController.m"; sourceTree = SOURCE_ROOT; };
+		55043F12195B7120005543BC /* CoreDataMultiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataMultiTableViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataMultiTableViewController.h"; sourceTree = SOURCE_ROOT; };
+		55043F13195B7120005543BC /* CoreDataMultiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataMultiTableViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataMultiTableViewController.m"; sourceTree = SOURCE_ROOT; };
+		55043F14195B7120005543BC /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataTableViewController.h"; sourceTree = SOURCE_ROOT; };
+		55043F15195B7120005543BC /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataTableViewController.m"; sourceTree = SOURCE_ROOT; };
+		55043F16195B7120005543BC /* CoreDataViewCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewCollectionController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataViewCollectionController.h"; sourceTree = SOURCE_ROOT; };
+		55043F17195B7120005543BC /* CoreDataViewCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataViewCollectionController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataViewCollectionController.m"; sourceTree = SOURCE_ROOT; };
+		55043F18195B7120005543BC /* CoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataViewController.h"; sourceTree = SOURCE_ROOT; };
+		55043F19195B7120005543BC /* CoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataViewController.m"; sourceTree = SOURCE_ROOT; };
+		55043F1A195B7120005543BC /* CoreDataViewsCollectionLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewsCollectionLogging.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataViewsCollectionLogging.h"; sourceTree = SOURCE_ROOT; };
 		55AEDC1A195B695D00711B85 /* libCoreData-Views-Collection-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCoreData-Views-Collection-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AEDC1D195B695D00711B85 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55AEDC21195B695D00711B85 /* CoreData-Views-Collection-ios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreData-Views-Collection-ios-Prefix.pch"; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		55AEDC37195B695D00711B85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55AEDC39195B695D00711B85 /* CoreData_Views_Collection_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData_Views_Collection_iosTests.m; sourceTree = "<group>"; };
 		55AEDC43195B698E00711B85 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6B7B41BC25FB4708B8A0EAC5 /* libPods-CoreData-Views-Collection-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoreData-Views-Collection-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,7 @@
 				55043F0F195B6B8E005543BC /* UIKit.framework in Frameworks */,
 				55AEDC44195B698E00711B85 /* CoreData.framework in Frameworks */,
 				55AEDC1E195B695D00711B85 /* Foundation.framework in Frameworks */,
+				0F6448E9350F41E8B97127E0 /* libPods-CoreData-Views-Collection-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,17 +102,17 @@
 		55043EF8195B6A91005543BC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				55043EFE195B6B1F005543BC /* CoreDataCollectionViewController.h */,
-				55043EFF195B6B1F005543BC /* CoreDataCollectionViewController.m */,
-				55043F00195B6B1F005543BC /* CoreDataMultiTableViewController.h */,
-				55043F01195B6B1F005543BC /* CoreDataMultiTableViewController.m */,
-				55043F02195B6B1F005543BC /* CoreDataTableViewController.h */,
-				55043F03195B6B1F005543BC /* CoreDataTableViewController.m */,
-				55043F04195B6B1F005543BC /* CoreDataViewCollectionController.h */,
-				55043F05195B6B1F005543BC /* CoreDataViewCollectionController.m */,
-				55043F06195B6B1F005543BC /* CoreDataViewController.h */,
-				55043F07195B6B1F005543BC /* CoreDataViewController.m */,
-				55043F08195B6B1F005543BC /* CoreDataViewsCollectionLogging.h */,
+				55043F10195B7120005543BC /* CoreDataCollectionViewController.h */,
+				55043F11195B7120005543BC /* CoreDataCollectionViewController.m */,
+				55043F12195B7120005543BC /* CoreDataMultiTableViewController.h */,
+				55043F13195B7120005543BC /* CoreDataMultiTableViewController.m */,
+				55043F14195B7120005543BC /* CoreDataTableViewController.h */,
+				55043F15195B7120005543BC /* CoreDataTableViewController.m */,
+				55043F16195B7120005543BC /* CoreDataViewCollectionController.h */,
+				55043F17195B7120005543BC /* CoreDataViewCollectionController.m */,
+				55043F18195B7120005543BC /* CoreDataViewController.h */,
+				55043F19195B7120005543BC /* CoreDataViewController.m */,
+				55043F1A195B7120005543BC /* CoreDataViewsCollectionLogging.h */,
 			);
 			name = Classes;
 			path = ../../Classes;
@@ -121,6 +125,7 @@
 				55AEDC33195B695D00711B85 /* CoreData-Views-Collection-iosTests */,
 				55AEDC1C195B695D00711B85 /* Frameworks */,
 				55AEDC1B195B695D00711B85 /* Products */,
+				38E49AB326F94CF69B25799B /* Pods-CoreData-Views-Collection-ios.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +146,7 @@
 				55AEDC1D195B695D00711B85 /* Foundation.framework */,
 				55AEDC2B195B695D00711B85 /* XCTest.framework */,
 				55AEDC2E195B695D00711B85 /* UIKit.framework */,
+				6B7B41BC25FB4708B8A0EAC5 /* libPods-CoreData-Views-Collection-ios.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,9 +193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55AEDC3D195B695D00711B85 /* Build configuration list for PBXNativeTarget "CoreData-Views-Collection-ios" */;
 			buildPhases = (
+				082512D162684ADD91A73F3B /* Check Pods Manifest.lock */,
 				55AEDC16195B695D00711B85 /* Sources */,
 				55AEDC17195B695D00711B85 /* Frameworks */,
 				55AEDC18195B695D00711B85 /* CopyFiles */,
+				848EEC88736B403184FE63A8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,16 +264,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		082512D162684ADD91A73F3B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		848EEC88736B403184FE63A8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-CoreData-Views-Collection-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		55AEDC16195B695D00711B85 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55043F0A195B6B1F005543BC /* CoreDataMultiTableViewController.m in Sources */,
-				55043F09195B6B1F005543BC /* CoreDataCollectionViewController.m in Sources */,
-				55043F0B195B6B1F005543BC /* CoreDataTableViewController.m in Sources */,
-				55043F0D195B6B1F005543BC /* CoreDataViewController.m in Sources */,
-				55043F0C195B6B1F005543BC /* CoreDataViewCollectionController.m in Sources */,
+				55043F1C195B7120005543BC /* CoreDataMultiTableViewController.m in Sources */,
+				55043F1B195B7120005543BC /* CoreDataCollectionViewController.m in Sources */,
+				55043F1D195B7120005543BC /* CoreDataTableViewController.m in Sources */,
+				55043F1F195B7120005543BC /* CoreDataViewController.m in Sources */,
+				55043F1E195B7120005543BC /* CoreDataViewCollectionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +410,7 @@
 		};
 		55AEDC3E195B695D00711B85 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38E49AB326F94CF69B25799B /* Pods-CoreData-Views-Collection-ios.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/CoreData_Views_Collection_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -381,6 +423,7 @@
 		};
 		55AEDC3F195B695D00711B85 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38E49AB326F94CF69B25799B /* Pods-CoreData-Views-Collection-ios.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/CoreData_Views_Collection_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

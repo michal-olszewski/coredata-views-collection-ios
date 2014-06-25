@@ -205,7 +205,7 @@
         [self.tableView endUpdates];
         if (self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
             self.sectionElementsCountCache = [self sectionElementsCountArray];
-            self.sectionCountCache = [self.sectionElementsCountCache count];
+            self.sectionCountCache = (int)[self.sectionElementsCountCache count];
         }
     }
     self.beganUpdates--;
@@ -231,7 +231,7 @@
         _suspendAutomaticTrackingOfChangesInManagedObjectContext = YES;
         if (self.beganUpdates == 0) {
             self.sectionElementsCountCache = [self sectionElementsCountArray];
-            self.sectionCountCache = [self.sectionElementsCountCache count];
+            self.sectionCountCache = (int)[self.sectionElementsCountCache count];
         }
     } else {
         [self performSelector:@selector(endSuspensionOfUpdatesDueToContextChanges) withObject:@0 afterDelay:0];

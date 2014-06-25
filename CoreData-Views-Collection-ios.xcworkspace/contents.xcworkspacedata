@@ -2,44 +2,43 @@
 <Workspace
    version = "1.0">
    <Group
-      location = "group:CoreData-Views-Collection-ios"
-      name = "CoreData-Views-Collection-ios">
-      <Group
-         location = "group:Classes"
-         name = "Classes">
-         <FileRef
-            location = "group:CoreDataViewsCollectionLogging.h">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataCollectionViewController.h">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataCollectionViewController.m">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataMultiTableViewController.h">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataMultiTableViewController.m">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataTableViewController.h">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataTableViewController.m">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataViewCollectionController.h">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataViewCollectionController.m">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataViewController.h">
-         </FileRef>
-         <FileRef
-            location = "group:CoreDataViewController.m">
-         </FileRef>
-      </Group>
+      location = "group:Classes"
+      name = "Classes">
+      <FileRef
+         location = "group:CoreDataCollectionViewController.h">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataCollectionViewController.m">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataMultiTableViewController.h">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataMultiTableViewController.m">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataTableViewController.h">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataTableViewController.m">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataViewCollectionController.h">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataViewCollectionController.m">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataViewController.h">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataViewController.m">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataViewsCollectionLogging.h">
+      </FileRef>
    </Group>
+   <FileRef
+      location = "group:CoreData-Views-Collection-ios/CoreData-Views-Collection-ios.xcodeproj">
+   </FileRef>
 </Workspace>

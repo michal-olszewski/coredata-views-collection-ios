@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
   s.source_files  = "CoreData-Views-Collection-ios/Classes", "CoreData-Views-Collection-ios/Classes/**/*.{h,m}"
   s.exclude_files = "CoreData-Views-Collection-ios/Classes/Exclude"
 
-  s.framework  = "CoreData", "UIKit"
+  s.framework  = "CoreData", "UIKit", "Foundation"
   s.dependency 'CocoaLumberjack'
 end

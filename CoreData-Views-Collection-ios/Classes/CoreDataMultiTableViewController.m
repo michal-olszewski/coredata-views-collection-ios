@@ -97,14 +97,22 @@
     return 0;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSUInteger index = [self.tableViews indexOfObject:tableView];
     if (index != NSNotFound && index < [self.fetchedResultsControllers count]) {
         NSFetchedResultsController *currentFetchedResultsController = self.fetchedResultsControllers[index];
-        return [[currentFetchedResultsController sections][(NSUInteger) section] name];
+        id o = [currentFetchedResultsController sections][(NSUInteger) section];
+        if ([o respondsToSelector:@selector(performSelector:)]) {
+            return [o performSelector:self.entityTitleSelector];
+        }
     }
     return @"";
 }
+
+#pragma clang diagnostic pop
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     NSUInteger arrayIndex = [self.tableViews indexOfObject:tableView];

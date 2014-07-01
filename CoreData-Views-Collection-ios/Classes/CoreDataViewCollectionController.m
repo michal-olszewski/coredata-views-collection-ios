@@ -71,20 +71,27 @@
     [self.collectionView reloadData];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 - (void)setFetchedResultsController:(NSFetchedResultsController *)newFetchedResultsController {
     NSFetchedResultsController *oldFetchedResultsController = _fetchedResultsController;
     if (newFetchedResultsController != oldFetchedResultsController) {
         oldFetchedResultsController.delegate = nil;
         _fetchedResultsController = newFetchedResultsController;
         newFetchedResultsController.delegate = self;
-        if ((!self.title || [self.title isEqualToString:oldFetchedResultsController.fetchRequest.entity.name]) && (!self.navigationController || !self.navigationItem.title)) {
-            self.title = newFetchedResultsController.fetchRequest.entity.name;
+        if ([oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
+            if ((!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
+                self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
+            }
         }
         if (newFetchedResultsController != nil) {
             [self performFetch];
         }
     }
 }
+
+#pragma clang diagnostic pop
 
 #pragma mark - UITableViewDataSource
 

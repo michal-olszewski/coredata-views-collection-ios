@@ -35,6 +35,7 @@
 @property(nonatomic) BOOL suspendAutomaticTrackingOfChangesInManagedObjectContext;
 // Set to YES to get some debugging output in the console.
 @property BOOL debug;
+@property(nonatomic) SEL entityTitleSelector;
 
 //Order of tableViews and their corresponding fetchedResultsControllers in following arrays has to be the same!
 @property(nonatomic, strong) NSMutableArray *tableViews;

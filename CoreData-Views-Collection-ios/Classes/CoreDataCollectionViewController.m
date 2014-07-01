@@ -24,7 +24,7 @@
 @synthesize suspendAutomaticTrackingOfChangesInManagedObjectContext = _suspendAutomaticTrackingOfChangesInManagedObjectContext;
 @synthesize debug = _debug;
 @synthesize beganUpdates = _beganUpdates;
-@synthesize additionalCellAtTheBegining;
+@synthesize additionalCellAtTheBeginning;
 @synthesize additionalCellAtTheEnd;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -34,7 +34,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.additionalCellAtTheBegining = NO;
+        self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
         self.debug = NO;
     }
@@ -44,7 +44,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.additionalCellAtTheBegining = NO;
+        self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
         self.debug = NO;
     }
@@ -54,7 +54,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.additionalCellAtTheBegining = NO;
+        self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
         self.debug = NO;
     }
@@ -78,14 +78,19 @@
     [self.collectionView reloadData];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 - (void)setFetchedResultsController:(NSFetchedResultsController *)newFetchedResultsController {
     NSFetchedResultsController *oldFetchedResultsController = _fetchedResultsController;
     if (newFetchedResultsController != oldFetchedResultsController) {
         oldFetchedResultsController.delegate = nil;
         _fetchedResultsController = newFetchedResultsController;
         newFetchedResultsController.delegate = self;
-        if ((!self.title || [self.title isEqualToString:oldFetchedResultsController.fetchRequest.entity.name]) && (!self.navigationController || !self.navigationItem.title)) {
-            self.title = newFetchedResultsController.fetchRequest.entity.name;
+        if ([oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
+            if ((!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
+                self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
+            }
         }
         if (newFetchedResultsController != nil) {
             [self performFetch];
@@ -93,18 +98,20 @@
     }
 }
 
+#pragma clang diagnostic pop
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     NSInteger count = [[self.fetchedResultsController sections] count];
-    if (count == 0 && (self.additionalCellAtTheBegining || self.additionalCellAtTheEnd)) {
+    if (count == 0 && (self.additionalCellAtTheBeginning || self.additionalCellAtTheEnd)) {
         count = 1;
     }
     return count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (self.additionalCellAtTheBegining) {
+    if (self.additionalCellAtTheBeginning) {
         if (section == 0) {
             if ([[self.fetchedResultsController sections] count] == 0) {
                 return 1;
@@ -166,7 +173,7 @@
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
-        if (self.additionalCellAtTheBegining) {
+        if (self.additionalCellAtTheBeginning) {
             if (indexPath && indexPath.section == 0) {
                 indexPath = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section];
             }

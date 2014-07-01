@@ -92,6 +92,9 @@
 
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 - (void)setFetchedResultsController:(NSFetchedResultsController *)newFetchedResultsController {
     NSFetchedResultsController *oldFetchedResultsController = _fetchedResultsController;
     if (newFetchedResultsController != oldFetchedResultsController) {
@@ -103,8 +106,10 @@
             oldFetchedResultsController.delegate = nil;
             _fetchedResultsController = newFetchedResultsController;
             newFetchedResultsController.delegate = self;
-            if (self.autoUpdateTitle && (!self.title || [self.title isEqualToString:oldFetchedResultsController.fetchRequest.entity.name]) && (!self.navigationController || !self.navigationItem.title)) {
-                self.title = newFetchedResultsController.fetchRequest.entity.name;
+            if ([oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
+                if (self.autoUpdateTitle && (!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
+                    self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
+                }
             }
             if (newFetchedResultsController) {
                 [self performFetch];
@@ -117,6 +122,8 @@
         }];
     }
 }
+
+#pragma clang diagnostic pop
 
 #pragma mark - UITableViewDataSource
 
@@ -134,9 +141,18 @@
     return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.fetchedResultsController sections][(NSUInteger) section] name];
+    id o = [self.fetchedResultsController sections][(NSUInteger) section];
+    if ([o respondsToSelector:@selector(performSelector:)]) {
+        return [o performSelector:self.entityTitleSelector];
+    }
+    return @"";
 }
+
+#pragma clang diagnostic pop
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
@@ -205,7 +221,7 @@
         [self.tableView endUpdates];
         if (self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
             self.sectionElementsCountCache = [self sectionElementsCountArray];
-            self.sectionCountCache = (int)[self.sectionElementsCountCache count];
+            self.sectionCountCache = (int) [self.sectionElementsCountCache count];
         }
     }
     self.beganUpdates--;
@@ -231,7 +247,7 @@
         _suspendAutomaticTrackingOfChangesInManagedObjectContext = YES;
         if (self.beganUpdates == 0) {
             self.sectionElementsCountCache = [self sectionElementsCountArray];
-            self.sectionCountCache = (int)[self.sectionElementsCountCache count];
+            self.sectionCountCache = (int) [self.sectionElementsCountCache count];
         }
     } else {
         [self performSelector:@selector(endSuspensionOfUpdatesDueToContextChanges) withObject:@0 afterDelay:0];

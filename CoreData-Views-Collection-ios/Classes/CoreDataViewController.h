@@ -12,6 +12,7 @@
 @interface CoreDataViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 // The controller (this class fetches nothing if this is not set).
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property(nonatomic) SEL entityTitleSelector;
 
 // Causes the fetchedResultsController to re-fetch the data.
 // You almost certainly never need to call this.

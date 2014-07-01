@@ -17,6 +17,7 @@
 @property BOOL debug;
 @property(atomic) BOOL additionalCellAtTheBeginning;
 @property(atomic) BOOL additionalCellAtTheEnd;
+@property(nonatomic) SEL entityTitleSelector;
 
 - (void)performFetch;
 @end

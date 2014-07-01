@@ -19,6 +19,7 @@
 
 // Set to YES to get some debugging output in the console.
 @property BOOL debug;
-@property(atomic) BOOL additionalCellAtTheBegining;
+@property(atomic) BOOL additionalCellAtTheBeginning;
 @property(atomic) BOOL additionalCellAtTheEnd;
+@property(nonatomic) SEL entityTitleSelector;
 @end

@@ -80,7 +80,7 @@
         oldFetchedResultsController.delegate = nil;
         _fetchedResultsController = newFetchedResultsController;
         newFetchedResultsController.delegate = self;
-        if ([oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
+        if (self.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
             if ((!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
                 self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
             }

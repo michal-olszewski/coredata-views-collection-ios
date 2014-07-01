@@ -105,7 +105,7 @@
     if (index != NSNotFound && index < [self.fetchedResultsControllers count]) {
         NSFetchedResultsController *currentFetchedResultsController = self.fetchedResultsControllers[index];
         id o = [currentFetchedResultsController sections][(NSUInteger) section];
-        if ([o respondsToSelector:@selector(performSelector:)]) {
+        if (self.entityTitleSelector && [o respondsToSelector:@selector(performSelector:)]) {
             return [o performSelector:self.entityTitleSelector];
         }
     }

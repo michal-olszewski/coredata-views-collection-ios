@@ -100,7 +100,7 @@
             oldFetchedResultsController.delegate = nil;
             _fetchedResultsController = newFetchedResultsController;
             newFetchedResultsController.delegate = self;
-            if ([oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
+            if (self.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
                 if ((!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
                     self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
                 }
@@ -134,7 +134,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     id o = [self.fetchedResultsController sections][(NSUInteger) section];
-    if ([o respondsToSelector:@selector(performSelector:)]) {
+    if (self.entityTitleSelector && [o respondsToSelector:@selector(performSelector:)]) {
         return [o performSelector:self.entityTitleSelector];
     }
     return @"";

@@ -220,7 +220,6 @@
                 }
                 break;
             case NSFetchedResultsChangeMove:
-
                 if (self.throttleUpdates) {
                     if (!self.throttleDispatched) {
                         self.throttleDispatched = YES;

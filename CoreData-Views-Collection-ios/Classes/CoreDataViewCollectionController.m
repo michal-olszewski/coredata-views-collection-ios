@@ -55,11 +55,12 @@
     }
     return self;
 }
+
 #pragma mark -
 #pragma mark setters and getters
 
 - (NSMutableArray *)updatesCache {
-    if (!_updatesCache){
+    if (!_updatesCache) {
         _updatesCache = [NSMutableArray array];
     }
     return _updatesCache;
@@ -189,32 +190,45 @@
             [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
             break;
         case NSFetchedResultsChangeUpdate:
-            if(self.throttleUpdates){
-                if (!self.throttleDispatched){
+            if (self.throttleUpdates) {
+                if (!self.throttleDispatched) {
                     self.throttleDispatched = YES;
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         self.throttleDispatched = NO;
                         [self updateFromThrottle];
                     });
                 }
-                if (![self.updatesCache indexOfObject:indexPath]){
+                if (![self.updatesCache indexOfObject:indexPath]) {
                     [self.updatesCache addObject:indexPath];
                 }
-            }
-            else{
-
-                break;
+            } else {
                 [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                break;
             }
-
         case NSFetchedResultsChangeMove:
-            [self.collectionView moveItemAtIndexPath:indexPath toIndexPath:newIndexPath];
+            if (self.throttleUpdates) {
+                if (!self.throttleDispatched) {
+                    self.throttleDispatched = YES;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        self.throttleDispatched = NO;
+                        [self updateFromThrottle];
+                    });
+                }
+                if (![self.updatesCache indexOfObject:indexPath]) {
+                    [self.updatesCache addObject:indexPath];
+                }
+                if (![self.updatesCache indexOfObject:newIndexPath]) {
+                    [self.updatesCache addObject:newIndexPath];
+                }
+            } else {
+                [self.collectionView moveItemAtIndexPath:indexPath toIndexPath:newIndexPath];
+            }
             break;
     }
 }
 
 - (void)updateFromThrottle {
-    NSMutableArray * changes = self.updatesCache;
+    NSMutableArray *changes = self.updatesCache;
     self.updatesCache = nil;
     [self.collectionView reloadItemsAtIndexPaths:changes];
 }

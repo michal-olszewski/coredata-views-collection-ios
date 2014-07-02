@@ -13,6 +13,8 @@
 @interface CoreDataViewCollectionController ()
 
 @property(nonatomic) BOOL beganUpdates;
+@property(nonatomic) BOOL throttleDispatched;
+@property(nonatomic, strong) NSMutableArray *updatesCache;
 
 @end
 
@@ -52,6 +54,15 @@
         self.additionalCellAtTheEnd = NO;
     }
     return self;
+}
+#pragma mark -
+#pragma mark setters and getters
+
+- (NSMutableArray *)updatesCache {
+    if (!_updatesCache){
+        _updatesCache = [NSMutableArray array];
+    }
+    return _updatesCache;
 }
 
 #pragma mark - Fetching
@@ -178,13 +189,34 @@
             [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
             break;
         case NSFetchedResultsChangeUpdate:
-            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-            break;
+            if(self.throttleUpdates){
+                if (!self.throttleDispatched){
+                    self.throttleDispatched = YES;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        self.throttleDispatched = NO;
+                        [self updateFromThrottle];
+                    });
+                }
+                if (![self.updatesCache indexOfObject:indexPath]){
+                    [self.updatesCache addObject:indexPath];
+                }
+            }
+            else{
+
+                break;
+                [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            }
 
         case NSFetchedResultsChangeMove:
             [self.collectionView moveItemAtIndexPath:indexPath toIndexPath:newIndexPath];
             break;
     }
+}
+
+- (void)updateFromThrottle {
+    NSMutableArray * changes = self.updatesCache;
+    self.updatesCache = nil;
+    [self.collectionView reloadItemsAtIndexPaths:changes];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

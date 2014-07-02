@@ -13,6 +13,8 @@
 @interface CoreDataCollectionViewController ()
 
 @property(nonatomic) BOOL beganUpdates;
+@property(nonatomic) BOOL throttleDispatched;
+@property(nonatomic, strong) NSMutableArray *updatesCache;
 
 @end
 
@@ -61,6 +63,16 @@
     return self;
 }
 
+#pragma mark -
+#pragma mark setters and getters
+
+- (NSMutableArray *)updatesCache {
+    if (!_updatesCache){
+        _updatesCache = [NSMutableArray array];
+    }
+    return _updatesCache;
+}
+
 #pragma mark - Fetching
 
 - (void)performFetch {
@@ -87,6 +99,7 @@
         oldFetchedResultsController.delegate = nil;
         _fetchedResultsController = newFetchedResultsController;
         newFetchedResultsController.delegate = self;
+        self.updatesCache = nil;
         if (self.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
             if ((!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
                 self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
@@ -191,7 +204,21 @@
                 break;
 
             case NSFetchedResultsChangeUpdate:
-                [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                if(self.throttleUpdates){
+                    if (!self.throttleDispatched){
+                        self.throttleDispatched = YES;
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            self.throttleDispatched = NO;
+                            [self updateFromThrottle];
+                        });
+                    }
+                    if (![self.updatesCache indexOfObject:indexPath]){
+                        [self.updatesCache addObject:indexPath];
+                    }
+                }
+                else{
+                    [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                }
                 break;
 
             case NSFetchedResultsChangeMove:
@@ -199,6 +226,12 @@
                 break;
         }
     }
+}
+
+- (void)updateFromThrottle{
+    NSMutableArray * changes = self.updatesCache;
+    self.updatesCache = nil;
+    [self.collectionView reloadItemsAtIndexPaths:changes];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

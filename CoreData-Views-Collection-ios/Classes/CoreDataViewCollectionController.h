@@ -18,6 +18,7 @@
 @property(atomic) BOOL additionalCellAtTheBeginning;
 @property(atomic) BOOL additionalCellAtTheEnd;
 @property(nonatomic) SEL entityTitleSelector;
+@property(atomic) BOOL throttleUpdates;
 
 - (void)performFetch;
 @end

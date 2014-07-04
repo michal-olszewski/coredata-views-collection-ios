@@ -66,7 +66,6 @@
 
 - (void)performFetch {
     if (self.fetchedResultsController) {
-        self.suspendAutomaticTrackingOfChangesInManagedObjectContext = YES;
         [self waitForUpdateEndAndPerformBlock:^{
             NSError *error;
             [self.fetchedResultsController performFetch:&error];
@@ -74,7 +73,6 @@
                 DDLogError(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
             }
             [self.tableView reloadData];
-            self.suspendAutomaticTrackingOfChangesInManagedObjectContext = NO;
         }];
 
     } else {
@@ -94,26 +92,29 @@
         self.beganUpdates = 0;
     }
     if (newFetchedResultsController != oldFetchedResultsController) {
-        self.suspendAutomaticTrackingOfChangesInManagedObjectContext = YES;
-        [self waitForUpdateEndAndPerformBlock:^{
-            [self scrollToTopAnimated:NO];
-            oldFetchedResultsController.delegate = nil;
-            _fetchedResultsController = newFetchedResultsController;
-            newFetchedResultsController.delegate = self;
-            if (self.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
-                if ((!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
-                    self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
+        if (newFetchedResultsController) {
+            [self waitForUpdateEndAndPerformBlock:^{
+                [self scrollToTopAnimated:NO];
+                oldFetchedResultsController.delegate = nil;
+                _fetchedResultsController = newFetchedResultsController;
+                newFetchedResultsController.delegate = self;
+                if (self.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
+                    if ((!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
+                        self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
+                    }
                 }
-            }
-            if (newFetchedResultsController) {
-                [self performFetch];
-            } else {
-                if (self.debug) {
-                    DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+                if (newFetchedResultsController) {
+                    [self performFetch];
+                } else {
+                    if (self.debug) {
+                        DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+                    }
+                    [self.tableView reloadData];
                 }
-                [self.tableView reloadData];
-            }
-        }];
+            }];
+        } else {
+            [self.tableView reloadData];
+        }
     }
 }
 

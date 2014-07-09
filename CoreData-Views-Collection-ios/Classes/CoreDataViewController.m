@@ -51,13 +51,16 @@
 - (void)waitForUpdateEndAndPerformBlock:(void (^)())block {
     if (self.beganUpdates > 0) {
         self.suspendAutomaticTrackingOfChangesInManagedObjectContext = YES;
+        __block __weak CoreDataViewController *cdView = self;
         dispatch_async(self.waitQueue, ^{
-            while (self.beganUpdates > 0) {
+            while (cdView && cdView.beganUpdates > 0) {
                 usleep(10);
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.suspendAutomaticTrackingOfChangesInManagedObjectContext = NO;
-                block();
+                if (cdView) {
+                    cdView.suspendAutomaticTrackingOfChangesInManagedObjectContext = NO;
+                    block();
+                }
             });
         });
     } else {

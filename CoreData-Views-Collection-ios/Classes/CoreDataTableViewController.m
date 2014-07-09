@@ -49,12 +49,15 @@
 
 - (void)waitForUpdateEndAndPerformBlock:(void (^)())block {
     if (self.beganUpdates > 0) {
+        __block __weak CoreDataTableViewController *cdView = self;
         dispatch_async(self.waitQueue, ^{
-            while (self.beganUpdates > 0) {
+            while (cdView && cdView.beganUpdates > 0) {
                 usleep(10);
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                block();
+                if (cdView) {
+                    block();
+                }
             });
         });
     } else {

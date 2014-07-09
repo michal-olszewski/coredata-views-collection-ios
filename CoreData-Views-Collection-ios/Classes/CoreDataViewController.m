@@ -69,9 +69,13 @@
 }
 
 - (void)reloadData {
-    [self waitForUpdateEndAndPerformBlock:^{
+    if(self.fetchedResultsController) {
+        [self waitForUpdateEndAndPerformBlock:^{
+            [self.tableView reloadData];
+        }];
+    } else{
         [self.tableView reloadData];
-    }];
+    }
 }
 
 #pragma mark - Fetching
@@ -92,7 +96,6 @@
         }
         [self.tableView reloadData];
     }
-
 }
 
 #pragma clang diagnostic push
@@ -104,25 +107,30 @@
         if (!oldFetchedResultsController) {
             self.beganUpdates = 0;
         }
-        [self waitForUpdateEndAndPerformBlock:^{
-            [self scrollToTopAnimated:NO];
-            oldFetchedResultsController.delegate = nil;
+        if(newFetchedResultsController) {
+            [self waitForUpdateEndAndPerformBlock:^{
+                [self scrollToTopAnimated:NO];
+                oldFetchedResultsController.delegate = nil;
+                _fetchedResultsController = newFetchedResultsController;
+                newFetchedResultsController.delegate = self;
+                if (self.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
+                    if (self.autoUpdateTitle && (!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
+                        self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
+                    }
+                }
+                if (newFetchedResultsController) {
+                    [self performFetch];
+                } else {
+                    if (self.debug) {
+                        DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+                    }
+                    [self.tableView reloadData];
+                }
+            }];
+        }else{
             _fetchedResultsController = newFetchedResultsController;
-            newFetchedResultsController.delegate = self;
-            if (self.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
-                if (self.autoUpdateTitle && (!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
-                    self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
-                }
-            }
-            if (newFetchedResultsController) {
-                [self performFetch];
-            } else {
-                if (self.debug) {
-                    DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-                }
-                [self.tableView reloadData];
-            }
-        }];
+            [self.tableView reloadData];
+        }
     }
 }
 

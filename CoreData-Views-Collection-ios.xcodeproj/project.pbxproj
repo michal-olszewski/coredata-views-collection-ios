@@ -22,6 +22,8 @@
 		55AEDC38195B695D00711B85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55AEDC36195B695D00711B85 /* InfoPlist.strings */; };
 		55AEDC3A195B695D00711B85 /* CoreData_Views_Collection_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AEDC39195B695D00711B85 /* CoreData_Views_Collection_iosTests.m */; };
 		55AEDC44195B698E00711B85 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC43195B698E00711B85 /* CoreData.framework */; };
+		55DA2BC3196F3D8000346AA0 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DA2BC0196F3D8000346AA0 /* UIView+FindFirstResponder.m */; };
+		55DA2BC4196F3D8000346AA0 /* UIViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DA2BC2196F3D8000346AA0 /* UIViewUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,10 @@
 		55AEDC37195B695D00711B85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55AEDC39195B695D00711B85 /* CoreData_Views_Collection_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData_Views_Collection_iosTests.m; sourceTree = "<group>"; };
 		55AEDC43195B698E00711B85 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		55DA2BBF196F3D8000346AA0 /* UIView+FindFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+FindFirstResponder.h"; path = "Classes/UIView+FindFirstResponder.h"; sourceTree = "<group>"; };
+		55DA2BC0196F3D8000346AA0 /* UIView+FindFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+FindFirstResponder.m"; path = "Classes/UIView+FindFirstResponder.m"; sourceTree = "<group>"; };
+		55DA2BC1196F3D8000346AA0 /* UIViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewUtils.h; path = Classes/UIViewUtils.h; sourceTree = "<group>"; };
+		55DA2BC2196F3D8000346AA0 /* UIViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewUtils.m; path = Classes/UIViewUtils.m; sourceTree = "<group>"; };
 		6B7B41BC25FB4708B8A0EAC5 /* libPods-CoreData-Views-Collection-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoreData-Views-Collection-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -154,6 +160,7 @@
 		55AEDC1F195B695D00711B85 /* CoreData-Views-Collection-ios */ = {
 			isa = PBXGroup;
 			children = (
+				55DA2BBE196F3D6800346AA0 /* Util */,
 				55043EF8195B6A91005543BC /* Classes */,
 				55AEDC20195B695D00711B85 /* Supporting Files */,
 			);
@@ -184,6 +191,17 @@
 				55AEDC36195B695D00711B85 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55DA2BBE196F3D6800346AA0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				55DA2BBF196F3D8000346AA0 /* UIView+FindFirstResponder.h */,
+				55DA2BC0196F3D8000346AA0 /* UIView+FindFirstResponder.m */,
+				55DA2BC1196F3D8000346AA0 /* UIViewUtils.h */,
+				55DA2BC2196F3D8000346AA0 /* UIViewUtils.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +321,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				55043F1C195B7120005543BC /* CoreDataMultiTableViewController.m in Sources */,
+				55DA2BC3196F3D8000346AA0 /* UIView+FindFirstResponder.m in Sources */,
+				55DA2BC4196F3D8000346AA0 /* UIViewUtils.m in Sources */,
 				55043F1B195B7120005543BC /* CoreDataCollectionViewController.m in Sources */,
 				55043F1D195B7120005543BC /* CoreDataTableViewController.m in Sources */,
 				55043F1F195B7120005543BC /* CoreDataViewController.m in Sources */,

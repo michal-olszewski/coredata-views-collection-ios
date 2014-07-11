@@ -15,6 +15,7 @@
 @property(nonatomic) BOOL beganUpdates;
 @property(nonatomic) BOOL throttleDispatched;
 @property(nonatomic, strong) NSMutableArray *updatesCache;
+@property(atomic, strong) NSLock *cacheUpdatingLock;
 
 @end
 
@@ -196,11 +197,25 @@
         }
         switch (type) {
             case NSFetchedResultsChangeInsert:
+                [self.cacheUpdatingLock tryLock];
                 [self.collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+                if(self.updatesCache) {
+                    self.throttleDispatched = NO;
+                    [self updateFromThrottle];
+                    [self.collectionView reloadData];
+                }
+                [self.cacheUpdatingLock unlock];
                 break;
 
             case NSFetchedResultsChangeDelete:
+                [self.cacheUpdatingLock tryLock];
                 [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+                if(self.updatesCache) {
+                    self.throttleDispatched = NO;
+                    [self updateFromThrottle];
+                    [self.collectionView reloadData];
+                }
+                [self.cacheUpdatingLock unlock];
                 break;
 
             case NSFetchedResultsChangeUpdate:
@@ -208,15 +223,21 @@
                     if (!self.throttleDispatched) {
                         self.throttleDispatched = YES;
                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [self.cacheUpdatingLock tryLock];
                             self.throttleDispatched = NO;
                             [self updateFromThrottle];
+                            [self.cacheUpdatingLock unlock];
                         });
                     }
                     if (![self.updatesCache indexOfObject:indexPath]) {
+                        [self.cacheUpdatingLock tryLock];
                         [self.updatesCache addObject:indexPath];
+                        [self.cacheUpdatingLock unlock];
                     }
                 } else {
+                    [self.cacheUpdatingLock tryLock];
                     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                    [self.cacheUpdatingLock unlock];
                 }
                 break;
             case NSFetchedResultsChangeMove:
@@ -224,18 +245,24 @@
                     if (!self.throttleDispatched) {
                         self.throttleDispatched = YES;
                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [self.cacheUpdatingLock tryLock];
                             self.throttleDispatched = NO;
                             [self updateFromThrottle];
+                            [self.cacheUpdatingLock unlock];
                         });
                     }
+                    [self.cacheUpdatingLock tryLock];
                     if (![self.updatesCache indexOfObject:indexPath]) {
                         [self.updatesCache addObject:indexPath];
                     }
                     if (![self.updatesCache indexOfObject:newIndexPath]) {
                         [self.updatesCache addObject:newIndexPath];
                     }
+                    [self.cacheUpdatingLock unlock];
                 } else {
+                    [self.cacheUpdatingLock tryLock];
                     [self.collectionView moveItemAtIndexPath:indexPath toIndexPath:newIndexPath];
+                    [self.cacheUpdatingLock unlock];
                 }
                 break;
         }

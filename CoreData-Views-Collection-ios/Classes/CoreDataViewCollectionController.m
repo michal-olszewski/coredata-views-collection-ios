@@ -15,7 +15,7 @@
 @property(nonatomic) BOOL beganUpdates;
 @property(nonatomic) BOOL throttleDispatched;
 @property(nonatomic, strong) NSMutableArray *updatesCache;
-@property(atomic, strong) NSLock *cacheUpdatingLock;
+@property(nonatomic, strong) NSMutableArray *cachedItemCount;
 
 @end
 
@@ -122,7 +122,12 @@
             if ([[self.fetchedResultsController sections] count] == 0) {
                 return 1;
             }
-            NSInteger count = [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
+            NSInteger count;
+            if (self.cachedItemCount) {
+                count = [[self.cachedItemCount objectAtIndex:(NSUInteger) section] integerValue];
+            } else {
+                count = [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
+            }
             return count;
         }
     }
@@ -131,8 +136,14 @@
             return 1;
         }
         if (section == ([self numberOfSectionsInCollectionView:collectionView] - 1)) {
+            if (self.cachedItemCount) {
+                return [[self.cachedItemCount objectAtIndex:(NSUInteger) section] integerValue] + 1;
+            }
             return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
         }
+    }
+    if (self.cachedItemCount) {
+        return [[self.cachedItemCount objectAtIndex:(NSUInteger) section] integerValue];
     }
     return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects];
 }
@@ -142,6 +153,10 @@
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
         self.beganUpdates = YES;
+        self.cachedItemCount = [NSMutableArray arrayWithCapacity:(NSUInteger) [self numberOfSectionsInCollectionView:nil]];
+        for (int i = 0; i < [self numberOfSectionsInCollectionView:nil]; i++) {
+            [self.cachedItemCount addObject:[NSNumber numberWithInteger:[[self.fetchedResultsController sections][(NSUInteger) i] numberOfObjects]]];
+        }
     }
 }
 
@@ -235,6 +250,7 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    self.cachedItemCount = nil;
     if (self.beganUpdates) {
         self.beganUpdates = NO;
     }

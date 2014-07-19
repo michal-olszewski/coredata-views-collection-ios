@@ -9,13 +9,14 @@
 #import <CocoaLumberjack/DDLog.h>
 #import "CoreDataCollectionViewController.h"
 #import "CoreDataViewsCollectionLogging.h"
+#import "CoreDataCollectionSectionChange.h"
+#import "CoreDataCollectionObjectChange.h"
 
 @interface CoreDataCollectionViewController ()
 
 @property(nonatomic) BOOL beganUpdates;
 @property(nonatomic) BOOL throttleDispatched;
 @property(nonatomic, strong) NSMutableArray *updatesCache;
-@property(nonatomic, strong) NSMutableArray *cachedItemCount;
 
 @end
 
@@ -130,13 +131,7 @@
             if ([[self.fetchedResultsController sections] count] == 0) {
                 return 1;
             }
-            NSInteger count;
-            if (self.cachedItemCount) {
-                count = [[self.cachedItemCount objectAtIndex:(NSUInteger) section] integerValue];
-            } else {
-                count = [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
-            }
-            return count;
+            return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
         }
     }
     if (self.additionalCellAtTheEnd) {
@@ -144,14 +139,8 @@
             return 1;
         }
         if (section == ([self numberOfSectionsInCollectionView:collectionView] - 1)) {
-            if (self.cachedItemCount) {
-                return [[self.cachedItemCount objectAtIndex:(NSUInteger) section] integerValue] + 1;
-            }
             return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
         }
-    }
-    if (self.cachedItemCount) {
-        return [[self.cachedItemCount objectAtIndex:(NSUInteger) section] integerValue];
     }
     return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects];
 }
@@ -159,41 +148,31 @@
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
-        self.beganUpdates = YES;
-        self.cachedItemCount = [NSMutableArray arrayWithCapacity:(NSUInteger) [self numberOfSectionsInCollectionView:nil]];
-        for (int i = 0; i < [self numberOfSectionsInCollectionView:nil]; i++) {
-            [self.cachedItemCount addObject:[NSNumber numberWithInteger:[[self.fetchedResultsController sections][(NSUInteger) i] numberOfObjects]]];
-        }
-    }
+    self.beganUpdates = YES;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
   didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex
      forChangeType:(NSFetchedResultsChangeType)type {
-    if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
-        switch (type) {
-            case NSFetchedResultsChangeInsert:
-                if (self.additionalCellAtTheEnd && sectionIndex == 0) {
-                    break;
-                }
-                [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
+    CoreDataCollectionSectionChange *change;
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            if (self.additionalCellAtTheEnd && sectionIndex == 0) {
                 break;
-            case NSFetchedResultsChangeDelete:
-                if (self.additionalCellAtTheEnd && sectionIndex == 0) {
-                    break;
-                }
-                [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
+            }
+        case NSFetchedResultsChangeDelete:
+            if (self.additionalCellAtTheEnd && sectionIndex == 0) {
                 break;
-            case NSFetchedResultsChangeUpdate:
-                [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
-                break;
-            case NSFetchedResultsChangeMove:
-                break;
-        }
+            }
+        case NSFetchedResultsChangeUpdate:
+        case NSFetchedResultsChangeMove:
+            change = [[CoreDataCollectionSectionChange alloc] init];
+            change.changeType = type;
+            change.index = sectionIndex;
+            [self.updatesCache addObject:change];
+            break;
     }
-
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -201,71 +180,39 @@
        atIndexPath:(NSIndexPath *)indexPath
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
-    if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
-        if (self.additionalCellAtTheBeginning) {
-            if (indexPath && indexPath.section == 0) {
-                indexPath = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section];
-            }
-            if (indexPath && newIndexPath && newIndexPath.section == 0) {
-                newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item + 1 inSection:indexPath.section];
-            }
+    if (self.additionalCellAtTheBeginning) {
+        if (indexPath && indexPath.section == 0) {
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section];
         }
-        switch (type) {
-            case NSFetchedResultsChangeInsert:
-                [self.collectionView insertItemsAtIndexPaths:@[newIndexPath]];
-                break;
-            case NSFetchedResultsChangeDelete:
-                [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
-                break;
-            case NSFetchedResultsChangeUpdate:
-                if (self.throttleUpdates) {
-                    if (!self.throttleDispatched) {
-                        self.throttleDispatched = YES;
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            self.throttleDispatched = NO;
-                            [self updateFromThrottle];
-                        });
-                    }
-                    if ([self.updatesCache indexOfObject:indexPath] == NSNotFound) {
-                        [self.updatesCache addObject:indexPath];
-                    }
-                } else {
-                    [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-                }
-                break;
-            case NSFetchedResultsChangeMove:
-                if (self.throttleUpdates) {
-                    if (!self.throttleDispatched) {
-                        self.throttleDispatched = YES;
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            self.throttleDispatched = NO;
-                            [self updateFromThrottle];
-                        });
-                    }
-                    if ([self.updatesCache indexOfObject:indexPath] == NSNotFound) {
-                        [self.updatesCache addObject:indexPath];
-                    }
-                    if ([self.updatesCache indexOfObject:newIndexPath] == NSNotFound) {
-                        [self.updatesCache addObject:newIndexPath];
-                    }
-                } else {
-                    [self.collectionView moveItemAtIndexPath:indexPath toIndexPath:newIndexPath];
-                }
-                break;
+        if (indexPath && newIndexPath && newIndexPath.section == 0) {
+            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item + 1 inSection:indexPath.section];
         }
     }
+    CoreDataCollectionObjectChange *change = [[CoreDataCollectionObjectChange alloc] init];
+    change.indexPath = indexPath;
+    change.secondIndexPath = newIndexPath;
+    change.changeType = type;
+    [self.updatesCache addObject:change];
 }
 
 - (void)updateFromThrottle {
     NSMutableArray *updates = self.updatesCache;
     self.updatesCache = nil;
-    [self.collectionView reloadItemsAtIndexPaths:updates];
+    [self.collectionView performBatchUpdates:^{
+        for (CoreDataCollectionChange *change in updates) {
+            [change performChangeOnView:self.collectionView];
+        }
+    }                             completion:^(BOOL finished){
+        DDLogInfo(@"Collection view updated with %d", finished);
+    }];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    self.cachedItemCount = nil;
     if (self.beganUpdates) {
         self.beganUpdates = NO;
+    }
+    if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
+        [self updateFromThrottle];
     }
 }
 
@@ -279,11 +226,6 @@
     } else {
         [self performSelector:@selector(endSuspensionOfUpdatesDueToContextChanges) withObject:@0 afterDelay:0];
     }
-}
-
-- (void)dealloc {
-    self.fetchedResultsController.delegate = nil;
-    self.fetchedResultsController = nil;
 }
 
 @end

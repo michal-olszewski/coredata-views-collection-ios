@@ -27,4 +27,26 @@
     }
 
 }
+
+- (BOOL)isEqual:(id)object {
+    if (object == self)
+        return YES;
+    if (!object || ![object isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToChange:object];
+}
+
+- (BOOL)isEqualToChange:(id)object {
+    CoreDataCollectionObjectChange *other = object;
+    if (self.indexPath && self.secondIndexPath) {
+        return ([self.indexPath isEqual:other.indexPath]) && [self.secondIndexPath isEqual:other.secondIndexPath] && self.changeType == other.changeType;
+    }
+    if (self.indexPath && !self.secondIndexPath) {
+        return ([self.indexPath isEqual:other.indexPath]) && !other.secondIndexPath && self.changeType == other.changeType;
+    }
+    if (!self.indexPath && self.secondIndexPath) {
+        return (!other.indexPath) && [self.secondIndexPath isEqual:other.secondIndexPath] && self.changeType == other.changeType;
+    }
+    return !other.secondIndexPath && !other.indexPath && self.changeType == other.changeType;
+}
 @end

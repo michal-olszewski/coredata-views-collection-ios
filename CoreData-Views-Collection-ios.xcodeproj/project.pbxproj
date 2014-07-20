@@ -24,9 +24,9 @@
 		55AEDC44195B698E00711B85 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC43195B698E00711B85 /* CoreData.framework */; };
 		55DA2BC3196F3D8000346AA0 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DA2BC0196F3D8000346AA0 /* UIView+FindFirstResponder.m */; };
 		55DA2BC4196F3D8000346AA0 /* UIViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DA2BC2196F3D8000346AA0 /* UIViewUtils.m */; };
-		BC1C23AD1DAA2FA2F9D41754 /* CoreDataCollectionSectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1C207835DEBC6951B6262D /* CoreDataCollectionSectionChange.m */; };
-		BC1C2B26B8120C5798D290EE /* CoreDataCollectionObjectChange.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2765D8AB8518075EAEE0 /* CoreDataCollectionObjectChange.m */; };
-		BC1C2CE6E55B484C7BA6DD67 /* CoreDataCollectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1C25FC2F0956CDC421DEA5 /* CoreDataCollectionChange.m */; };
+		BC1C23ACBDD65465F7B45D92 /* CoreDataCollectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D98329A11D8FC19DD8C /* CoreDataCollectionChange.m */; };
+		BC1C26252B684DC60DFF2274 /* CoreDataCollectionSectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1C251B8D066FB61D163355 /* CoreDataCollectionSectionChange.m */; };
+		BC1C264A13BC0A628EC98007 /* CoreDataCollectionObjectChange.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2181711E5998A404643D /* CoreDataCollectionObjectChange.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,12 +80,12 @@
 		55DA2BC1196F3D8000346AA0 /* UIViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewUtils.h; path = Classes/UIViewUtils.h; sourceTree = "<group>"; };
 		55DA2BC2196F3D8000346AA0 /* UIViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewUtils.m; path = Classes/UIViewUtils.m; sourceTree = "<group>"; };
 		6B7B41BC25FB4708B8A0EAC5 /* libPods-CoreData-Views-Collection-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoreData-Views-Collection-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC1C207835DEBC6951B6262D /* CoreDataCollectionSectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionSectionChange.m; sourceTree = SOURCE_ROOT; };
-		BC1C25FC2F0956CDC421DEA5 /* CoreDataCollectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionChange.m; sourceTree = SOURCE_ROOT; };
-		BC1C26478BCAE282FD928F52 /* CoreDataCollectionSectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionSectionChange.h; sourceTree = SOURCE_ROOT; };
-		BC1C271F3BC1387DA9B0F031 /* CoreDataCollectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionChange.h; sourceTree = SOURCE_ROOT; };
-		BC1C2765D8AB8518075EAEE0 /* CoreDataCollectionObjectChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionObjectChange.m; sourceTree = SOURCE_ROOT; };
-		BC1C287CC2F0A03F77E52E05 /* CoreDataCollectionObjectChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionObjectChange.h; sourceTree = SOURCE_ROOT; };
+		BC1C2181711E5998A404643D /* CoreDataCollectionObjectChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionObjectChange.m; sourceTree = SOURCE_ROOT; };
+		BC1C22FAA9AE39C8BCC29FD3 /* CoreDataCollectionSectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionSectionChange.h; sourceTree = SOURCE_ROOT; };
+		BC1C251B8D066FB61D163355 /* CoreDataCollectionSectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionSectionChange.m; sourceTree = SOURCE_ROOT; };
+		BC1C281FE1725FA3BF597F47 /* CoreDataCollectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionChange.h; sourceTree = SOURCE_ROOT; };
+		BC1C2A3267E22FB941BBA261 /* CoreDataCollectionObjectChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionObjectChange.h; sourceTree = SOURCE_ROOT; };
+		BC1C2D98329A11D8FC19DD8C /* CoreDataCollectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionChange.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,12 +128,12 @@
 				55043F18195B7120005543BC /* CoreDataViewController.h */,
 				55043F19195B7120005543BC /* CoreDataViewController.m */,
 				55043F1A195B7120005543BC /* CoreDataViewsCollectionLogging.h */,
-				BC1C25FC2F0956CDC421DEA5 /* CoreDataCollectionChange.m */,
-				BC1C271F3BC1387DA9B0F031 /* CoreDataCollectionChange.h */,
-				BC1C207835DEBC6951B6262D /* CoreDataCollectionSectionChange.m */,
-				BC1C26478BCAE282FD928F52 /* CoreDataCollectionSectionChange.h */,
-				BC1C2765D8AB8518075EAEE0 /* CoreDataCollectionObjectChange.m */,
-				BC1C287CC2F0A03F77E52E05 /* CoreDataCollectionObjectChange.h */,
+				BC1C251B8D066FB61D163355 /* CoreDataCollectionSectionChange.m */,
+				BC1C2A3267E22FB941BBA261 /* CoreDataCollectionObjectChange.h */,
+				BC1C2D98329A11D8FC19DD8C /* CoreDataCollectionChange.m */,
+				BC1C281FE1725FA3BF597F47 /* CoreDataCollectionChange.h */,
+				BC1C2181711E5998A404643D /* CoreDataCollectionObjectChange.m */,
+				BC1C22FAA9AE39C8BCC29FD3 /* CoreDataCollectionSectionChange.h */,
 			);
 			name = Classes;
 			path = ../../Classes;
@@ -342,9 +342,9 @@
 				55043F1D195B7120005543BC /* CoreDataTableViewController.m in Sources */,
 				55043F1F195B7120005543BC /* CoreDataViewController.m in Sources */,
 				55043F1E195B7120005543BC /* CoreDataViewCollectionController.m in Sources */,
-				BC1C2CE6E55B484C7BA6DD67 /* CoreDataCollectionChange.m in Sources */,
-				BC1C23AD1DAA2FA2F9D41754 /* CoreDataCollectionSectionChange.m in Sources */,
-				BC1C2B26B8120C5798D290EE /* CoreDataCollectionObjectChange.m in Sources */,
+				BC1C26252B684DC60DFF2274 /* CoreDataCollectionSectionChange.m in Sources */,
+				BC1C23ACBDD65465F7B45D92 /* CoreDataCollectionChange.m in Sources */,
+				BC1C264A13BC0A628EC98007 /* CoreDataCollectionObjectChange.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

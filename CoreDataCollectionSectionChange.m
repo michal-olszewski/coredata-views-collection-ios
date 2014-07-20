@@ -26,4 +26,17 @@
             break;
     }
 }
+
+- (BOOL)isEqual:(id)object {
+    if (object == self)
+        return YES;
+    if (!object || ![object isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToChange:object];
+}
+
+- (BOOL)isEqualToChange:(id)object {
+    CoreDataCollectionSectionChange *other = object;
+    return self.index == other.index && self.changeType == other.changeType;
+}
 @end

@@ -15,6 +15,7 @@
 @interface CoreDataViewCollectionController ()
 
 @property(nonatomic) BOOL beganUpdates;
+@property(nonatomic) BOOL updateAnimationFinished;
 @property(nonatomic) BOOL throttleDispatched;
 @property(nonatomic, strong) NSMutableArray *updatesCache;
 
@@ -36,6 +37,7 @@
     if (self) {
         self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
+        self.updateAnimationFinished = YES;
     }
     return self;
 }
@@ -45,6 +47,7 @@
     if (self) {
         self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
+        self.updateAnimationFinished = YES;
     }
     return self;
 }
@@ -165,7 +168,8 @@
             change = [[CoreDataCollectionSectionChange alloc] init];
             change.changeType = type;
             change.index = sectionIndex;
-            [self.updatesCache addObject:change];
+            if ([self.updatesCache indexOfObject:change] == NSNotFound)
+                [self.updatesCache addObject:change];
             break;
     }
 }
@@ -187,17 +191,30 @@
     change.indexPath = indexPath;
     change.secondIndexPath = newIndexPath;
     change.changeType = type;
-    [self.updatesCache addObject:change];
+    if ([self.updatesCache indexOfObject:change] == NSNotFound)
+        [self.updatesCache addObject:change];
 }
 
 - (void)updateFromThrottle {
-    NSMutableArray *updates = self.updatesCache;
+    if (!self.updateAnimationFinished && !self.throttleDispatched) {
+        self.throttleDispatched = YES;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (250 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+            self.throttleDispatched = NO;
+            [self updateFromThrottle];
+        });
+    }
+    if (self.throttleDispatched) {
+        return;
+    }
+    self.updateAnimationFinished = NO;
+    __block NSMutableArray *updates = self.updatesCache;
     self.updatesCache = nil;
     [self.collectionView performBatchUpdates:^{
         for (CoreDataCollectionChange *change in updates) {
             [change performChangeOnView:self.collectionView];
         }
     }                             completion:^(BOOL finished){
+        self.updateAnimationFinished = YES;
         DDLogInfo(@"Collection view updated with %d", finished);
     }];
 }

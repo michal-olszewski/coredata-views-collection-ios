@@ -18,6 +18,8 @@
 @property(nonatomic) BOOL updateAnimationFinished;
 @property(nonatomic) NSMutableArray *throttleQueue;
 @property(nonatomic, strong) NSMutableArray *updatesCache;
+@property(nonatomic, strong) NSNumber *sectionCountCache;
+@property(nonatomic, strong) NSArray *itemsCountCache;
 
 @end
 
@@ -113,7 +115,12 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    NSInteger count = [[self.fetchedResultsController sections] count];
+    NSInteger count;
+    if (self.itemsCountCache) {
+        count = [self.sectionCountCache integerValue];
+    } else {
+        count = [[self.fetchedResultsController sections] count];
+    }
     if (count == 0 && (self.additionalCellAtTheBeginning || self.additionalCellAtTheEnd)) {
         count = 1;
     }
@@ -121,24 +128,36 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSUInteger sectionCount;
+    if (self.sectionCountCache) {
+        sectionCount = (NSUInteger) [self.sectionCountCache integerValue];
+    } else {
+        sectionCount = [[self.fetchedResultsController sections] count];
+    }
+    NSUInteger itemCount;
+    if (self.itemsCountCache) {
+        itemCount = (NSUInteger) [self.itemsCountCache[(NSUInteger) section] integerValue];
+    } else {
+        itemCount = [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects];
+    }
     if (self.additionalCellAtTheBeginning) {
         if (section == 0) {
-            if ([[self.fetchedResultsController sections] count] == 0) {
+            if (sectionCount == 0) {
                 return 1;
             }
 
-            return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
+            return itemCount + 1;
         }
     }
     if (self.additionalCellAtTheEnd) {
-        if ([[self.fetchedResultsController sections] count] == 0) {
+        if (sectionCount == 0) {
             return 1;
         }
-        if (section == ([self numberOfSectionsInCollectionView:collectionView] - 1)) {
-            return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects] + 1;
+        if (section == (sectionCount - 1)) {
+            return itemCount + 1;
         }
     }
-    return [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects];
+    return itemCount;
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
@@ -203,20 +222,34 @@
     }
 }
 
+- (NSNumber *)getCurrentSectionCount {
+    return @([[self.fetchedResultsController sections] count]);
+}
+
+- (NSArray *)getCurrentItemCounts {
+    NSMutableArray *result = [NSMutableArray array];
+    for (int i = 0; i < [self.fetchedResultsController sections].count; i++) {
+        [result addObject:@([[self.fetchedResultsController sections][(NSUInteger) i] numberOfObjects])];
+    }
+    return result;
+}
+
 - (void)addToQueue:(NSMutableArray *)array {
     if(!self.throttleQueue){
         self.throttleQueue = [[NSMutableArray alloc] init];
     }
-    [self.throttleQueue addObject:array];
+    [self.throttleQueue addObject:@{@"changes" : array, @"sections" : [self getCurrentSectionCount], @"items" : [self getCurrentItemCounts]}];
 }
 
 - (void)updateFromQueue {
     if(self.throttleQueue.count > 0) {
         self.updateAnimationFinished = NO;
         [self.collectionView performBatchUpdates:^{
-            for (CoreDataCollectionChange *change in [self.throttleQueue firstObject]) {
+            for (CoreDataCollectionChange *change in [self.throttleQueue firstObject][@"changes"]) {
                 [change performChangeOnView:self.collectionView];
             }
+            self.sectionCountCache = [self.throttleQueue firstObject][@"sections"];
+            self.itemsCountCache = [self.throttleQueue firstObject][@"items"];
             [self.throttleQueue removeObject:[self.throttleQueue firstObject]];
         }                             completion:^(BOOL finished){
             self.updateAnimationFinished = YES;

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Kacper Kawecki. All rights reserved.
 //
 
-#import <CocoaLumberjack/DDLog.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "CoreDataViewController.h"
 #import "CoreDataViewsCollectionLogging.h"
 
@@ -69,11 +69,11 @@
 }
 
 - (void)reloadData {
-    if(self.fetchedResultsController) {
+    if (self.fetchedResultsController) {
         [self waitForUpdateEndAndPerformBlock:^{
             [self.tableView reloadData];
         }];
-    } else{
+    } else {
         [self.tableView reloadData];
     }
 }
@@ -107,7 +107,7 @@
         if (!oldFetchedResultsController) {
             self.beganUpdates = 0;
         }
-        if(newFetchedResultsController) {
+        if (newFetchedResultsController) {
             [self waitForUpdateEndAndPerformBlock:^{
                 [self scrollToTopAnimated:NO];
                 oldFetchedResultsController.delegate = nil;
@@ -127,7 +127,7 @@
                     [self.tableView reloadData];
                 }
             }];
-        }else{
+        } else {
             _fetchedResultsController = newFetchedResultsController;
             [self.tableView reloadData];
         }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Kacper Kawecki. All rights reserved.
 //
 
-#import <CocoaLumberjack/DDLog.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "CoreDataCollectionViewController.h"
 #import "CoreDataViewsCollectionLogging.h"
 #import "CoreDataCollectionSectionChange.h"
@@ -254,7 +254,7 @@
             self.sectionCountCache = [self.throttleQueue firstObject][@"sections"];
             self.itemsCountCache = [self.throttleQueue firstObject][@"items"];
             [self.throttleQueue removeObject:[self.throttleQueue firstObject]];
-        }                             completion:^(BOOL finished){
+        }                             completion:^(BOOL finished) {
             self.updateAnimationFinished = YES;
             [self updateFromQueue];
             DDLogInfo(@"Collection view updated with %d", finished);

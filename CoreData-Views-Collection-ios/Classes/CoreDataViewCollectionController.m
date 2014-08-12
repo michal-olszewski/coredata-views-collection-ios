@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Kacper Kawecki. All rights reserved.
 //
 
-#import <CocoaLumberjack/DDLog.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "CoreDataViewCollectionController.h"
 #import "CoreDataViewsCollectionLogging.h"
 #import "CoreDataCollectionSectionChange.h"
@@ -235,14 +235,14 @@
 }
 
 - (void)addToQueue:(NSMutableArray *)array {
-    if(!self.throttleQueue){
+    if (!self.throttleQueue) {
         self.throttleQueue = [[NSMutableArray alloc] init];
     }
     [self.throttleQueue addObject:@{@"changes" : array, @"sections" : [self getCurrentSectionCount], @"items" : [self getCurrentItemCounts]}];
 }
 
 - (void)updateFromQueue {
-    if(self.throttleQueue.count > 0) {
+    if (self.throttleQueue.count > 0) {
         self.updateAnimationFinished = NO;
         [self.collectionView performBatchUpdates:^{
             for (CoreDataCollectionChange *change in [self.throttleQueue firstObject][@"changes"]) {
@@ -251,7 +251,7 @@
             self.sectionCountCache = [self.throttleQueue firstObject][@"sections"];
             self.itemsCountCache = [self.throttleQueue firstObject][@"items"];
             [self.throttleQueue removeObject:[self.throttleQueue firstObject]];
-        }                             completion:^(BOOL finished){
+        }                             completion:^(BOOL finished) {
             self.updateAnimationFinished = YES;
             [self updateFromQueue];
             DDLogInfo(@"Collection view updated with %d", finished);

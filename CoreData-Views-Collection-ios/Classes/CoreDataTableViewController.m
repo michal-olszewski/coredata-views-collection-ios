@@ -69,13 +69,14 @@
 
 - (void)performFetch {
     if (self.fetchedResultsController) {
+        __block __weak CoreDataTableViewController *coreDataTableViewController = self;
         [self waitForUpdateEndAndPerformBlock:^{
             NSError *error;
-            [self.fetchedResultsController performFetch:&error];
+            [coreDataTableViewController.fetchedResultsController performFetch:&error];
             if (error) {
-                DDLogError(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
+                DDLogError(@"[%@ %@] %@ (%@)", NSStringFromClass([coreDataTableViewController class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
             }
-            [self.tableView reloadData];
+            [coreDataTableViewController.tableView reloadData];
         }];
 
     } else {

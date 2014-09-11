@@ -247,16 +247,17 @@
 - (void)updateFromQueue {
     if (self.throttleQueue.count > 0) {
         self.updateAnimationFinished = NO;
+        __weak __block CoreDataCollectionViewController *coreDataCollectionViewController = self;
         [self.collectionView performBatchUpdates:^{
-            for (CoreDataCollectionChange *change in [self.throttleQueue firstObject][@"changes"]) {
-                [change performChangeOnView:self.collectionView];
+            for (CoreDataCollectionChange *change in [coreDataCollectionViewController.throttleQueue firstObject][@"changes"]) {
+                [change performChangeOnView:coreDataCollectionViewController.collectionView];
             }
-            self.sectionCountCache = [self.throttleQueue firstObject][@"sections"];
-            self.itemsCountCache = [self.throttleQueue firstObject][@"items"];
-            [self.throttleQueue removeObject:[self.throttleQueue firstObject]];
+            coreDataCollectionViewController.sectionCountCache = [coreDataCollectionViewController.throttleQueue firstObject][@"sections"];
+            coreDataCollectionViewController.itemsCountCache = [coreDataCollectionViewController.throttleQueue firstObject][@"items"];
+            [coreDataCollectionViewController.throttleQueue removeObject:[coreDataCollectionViewController.throttleQueue firstObject]];
         }                             completion:^(BOOL finished){
-            self.updateAnimationFinished = YES;
-            [self updateFromQueue];
+            coreDataCollectionViewController.updateAnimationFinished = YES;
+            [coreDataCollectionViewController updateFromQueue];
             DDLogInfo(@"Collection view updated with %d", finished);
         }];
     }

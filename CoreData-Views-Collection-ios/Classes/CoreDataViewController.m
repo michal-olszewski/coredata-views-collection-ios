@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Kacper Kawecki. All rights reserved.
 //
 
-#import <CocoaLumberjack/DDLog.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "CoreDataViewController.h"
 #import "CoreDataViewsCollectionLogging.h"
 
@@ -69,11 +69,12 @@
 }
 
 - (void)reloadData {
-    if(self.fetchedResultsController) {
+    if (self.fetchedResultsController) {
+        __weak __block CoreDataViewController *coreDataViewController = self;
         [self waitForUpdateEndAndPerformBlock:^{
-            [self.tableView reloadData];
+            [coreDataViewController.tableView reloadData];
         }];
-    } else{
+    } else {
         [self.tableView reloadData];
     }
 }
@@ -82,13 +83,14 @@
 
 - (void)performFetch {
     if (self.fetchedResultsController) {
+        __weak __block CoreDataViewController *coreDataViewController = self;
         [self waitForUpdateEndAndPerformBlock:^{
             NSError *error;
-            [self.fetchedResultsController performFetch:&error];
+            [coreDataViewController.fetchedResultsController performFetch:&error];
             if (error) {
-                DDLogError(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
+                DDLogError(@"[%@ %@] %@ (%@)", NSStringFromClass([coreDataViewController class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
             }
-            [self.tableView reloadData];
+            [coreDataViewController.tableView reloadData];
         }];
     } else {
         if (self.debug) {
@@ -107,27 +109,28 @@
         if (!oldFetchedResultsController) {
             self.beganUpdates = 0;
         }
-        if(newFetchedResultsController) {
+        if (newFetchedResultsController) {
+            __weak __block CoreDataViewController *coreDataViewController = self;
             [self waitForUpdateEndAndPerformBlock:^{
-                [self scrollToTopAnimated:NO];
+                [coreDataViewController scrollToTopAnimated:NO];
                 oldFetchedResultsController.delegate = nil;
                 _fetchedResultsController = newFetchedResultsController;
-                newFetchedResultsController.delegate = self;
-                if (self.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
-                    if (self.autoUpdateTitle && (!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
-                        self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
+                newFetchedResultsController.delegate = coreDataViewController;
+                if (coreDataViewController.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:coreDataViewController.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:coreDataViewController.entityTitleSelector]) {
+                    if (coreDataViewController.autoUpdateTitle && (!coreDataViewController.title || [coreDataViewController.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:coreDataViewController.entityTitleSelector]]) && (!coreDataViewController.navigationController || !coreDataViewController.navigationItem.title)) {
+                        coreDataViewController.title = [newFetchedResultsController.fetchRequest.entity performSelector:coreDataViewController.entityTitleSelector];
                     }
                 }
                 if (newFetchedResultsController) {
-                    [self performFetch];
+                    [coreDataViewController performFetch];
                 } else {
-                    if (self.debug) {
-                        DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+                    if (coreDataViewController.debug) {
+                        DDLogDebug(@"[%@ %@] reset to nil", NSStringFromClass([coreDataViewController class]), NSStringFromSelector(_cmd));
                     }
-                    [self.tableView reloadData];
+                    [coreDataViewController.tableView reloadData];
                 }
             }];
-        }else{
+        } else {
             _fetchedResultsController = newFetchedResultsController;
             [self.tableView reloadData];
         }

@@ -242,7 +242,7 @@
 }
 
 - (void)updateFromQueue {
-    if (self.throttleQueue.count > 0) {
+    if (self.throttleQueue.count > 0 && self.fetchedResultsController) {
         self.updateAnimationFinished = NO;
         __weak __block CoreDataViewCollectionController *coreDataViewCollectionController = self;
         [self.collectionView performBatchUpdates:^{

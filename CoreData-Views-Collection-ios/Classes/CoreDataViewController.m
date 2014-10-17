@@ -273,8 +273,10 @@
 }
 
 - (void)dealloc {
-    self.fetchedResultsController.delegate = nil;
-    self.fetchedResultsController = nil;
+    _fetchedResultsController.delegate = nil;
+    _fetchedResultsController = nil;
+    _tableView.dataSource = nil;
+    _tableView.delegate = nil;
 }
 
 @end

@@ -284,5 +284,9 @@
     }
 }
 
+- (void)dealloc {
+    _fetchedResultsController.delegate = nil;
+    _fetchedResultsController = nil;
+}
 @end
 

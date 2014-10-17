@@ -285,4 +285,11 @@
     return nil;
 }
 
+- (void)dealloc {
+    _fetchedResultsController.delegate = nil;
+    _fetchedResultsController = nil;
+    _collectionView.dataSource = nil;
+    _collectionView.delegate = nil;
+}
+
 @end

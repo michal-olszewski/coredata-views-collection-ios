@@ -18,6 +18,7 @@
 
 @implementation CoreDataViewController
 
+#pragma mark -
 #pragma mark - Properties
 
 @synthesize fetchedResultsController = _fetchedResultsController;
@@ -29,6 +30,7 @@
     return YES;
 }
 
+#pragma mark -
 #pragma mark - helpers
 
 - (dispatch_queue_t)waitQueue {
@@ -79,6 +81,7 @@
     }
 }
 
+#pragma mark -
 #pragma mark - Fetching
 
 - (void)performFetch {
@@ -139,6 +142,7 @@
 
 #pragma clang diagnostic pop
 
+#pragma mark -
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -176,6 +180,7 @@
     return nil;
 }
 
+#pragma mark -
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
@@ -220,11 +225,11 @@
                 [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 break;
             case NSFetchedResultsChangeUpdate:
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:self.updateAnimation];
                 break;
             case NSFetchedResultsChangeMove:
-                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:self.updateAnimation];
+                [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:self.updateAnimation];
                 break;
         }
     }
@@ -245,7 +250,7 @@
     NSInteger sections = [[self.fetchedResultsController sections] count];
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:(NSUInteger) sections];
     for (int section = 0; section < sections; section++) {
-        [result addObject:[NSNumber numberWithInteger:[[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects]]];
+        [result addObject:@([[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects])];
     }
     return [NSArray arrayWithArray:result];
 }
@@ -278,5 +283,16 @@
     _tableView.dataSource = nil;
     _tableView.delegate = nil;
 }
+
+#pragma mark -
+#pragma mark - Getters and Setters
+
+- (UITableViewRowAnimation)updateAnimation {
+    if (!_updateAnimation) {
+        _updateAnimation = UITableViewRowAnimationNone;
+    }
+    return _updateAnimation;
+}
+
 
 @end

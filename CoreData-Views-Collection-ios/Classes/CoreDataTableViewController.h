@@ -46,4 +46,5 @@
 @property BOOL debug;
 @property(nonatomic) int beganUpdates;
 
+@property(nonatomic) UITableViewRowAnimation updateAnimation;
 @end

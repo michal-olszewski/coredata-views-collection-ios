@@ -41,4 +41,5 @@
 @property(nonatomic, strong) NSMutableArray *tableViews;
 @property(nonatomic, strong) NSMutableArray *fetchedResultsControllers;
 
+@property(nonatomic) UITableViewRowAnimation updateAnimation;
 @end

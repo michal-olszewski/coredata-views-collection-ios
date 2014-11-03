@@ -18,6 +18,7 @@
 
 @implementation CoreDataMultiTableViewController
 
+#pragma mark -
 #pragma mark - Properties
 
 @synthesize fetchedResultsControllers = _fetchedResultsControllers;
@@ -29,6 +30,7 @@
     return YES;
 }
 
+#pragma mark -
 #pragma mark - Fetching
 
 - (void)performFetchForFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController {
@@ -77,6 +79,7 @@
     }
 }
 
+#pragma mark -
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -127,6 +130,7 @@
     return nil;
 }
 
+#pragma mark -
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
@@ -183,12 +187,12 @@
                     break;
 
                 case NSFetchedResultsChangeUpdate:
-                    [currentTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    [currentTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:self.updateAnimation];
                     break;
 
                 case NSFetchedResultsChangeMove:
-                    [currentTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                    [currentTableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    [currentTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:self.updateAnimation];
+                    [currentTableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:self.updateAnimation];
                     break;
             }
         }
@@ -219,6 +223,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
+}
+
+#pragma mark -
+#pragma mark - Getters and Setters
+
+- (UITableViewRowAnimation)updateAnimation {
+    if (!_updateAnimation) {
+        _updateAnimation = UITableViewRowAnimationNone;
+    }
+    return _updateAnimation;
 }
 
 @end

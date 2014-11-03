@@ -50,4 +50,5 @@
 
 @property(atomic) int beganUpdates;
 
+@property(nonatomic) UITableViewRowAnimation updateAnimation;
 @end

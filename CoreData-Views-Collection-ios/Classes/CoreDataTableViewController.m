@@ -17,6 +17,7 @@
 
 @implementation CoreDataTableViewController
 
+#pragma mark -
 #pragma mark - Properties
 
 @synthesize fetchedResultsController = _fetchedResultsController;
@@ -28,6 +29,7 @@
     return YES;
 }
 
+#pragma mark -
 #pragma mark - helpers
 
 - (dispatch_queue_t)waitQueue {
@@ -65,6 +67,7 @@
     }
 }
 
+#pragma merk -
 #pragma mark - Fetching
 
 - (void)performFetch {
@@ -124,6 +127,7 @@
 
 #pragma clang diagnostic pop
 
+#pragma mark -
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -155,6 +159,7 @@
     return nil;
 }
 
+#pragma mark -
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
@@ -199,11 +204,11 @@
                 [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 break;
             case NSFetchedResultsChangeUpdate:
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:self.updateAnimation];
                 break;
             case NSFetchedResultsChangeMove:
-                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:self.updateAnimation];
+                [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:self.updateAnimation];
                 break;
         }
     }
@@ -231,6 +236,16 @@
 - (void)dealloc {
     _fetchedResultsController.delegate = nil;
     _fetchedResultsController = nil;
+}
+
+#pragma mark -
+#pragma mark Getters and Setters
+
+- (UITableViewRowAnimation)updateAnimation {
+    if (!_updateAnimation) {
+        _updateAnimation = UITableViewRowAnimationNone;
+    }
+    return _updateAnimation;
 }
 
 @end

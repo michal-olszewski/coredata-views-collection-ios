@@ -9,6 +9,6 @@
 #ifndef GeniePlanner_CoreDataViewsCollectionLogging_h
 #define GeniePlanner_CoreDataViewsCollectionLogging_h
 
-static const int ddLogLevel = LOG_LEVEL_ERROR;
+static const int ddLogLevel = DDLogLevelError;
 
 #endif

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Kacper Kawecki. All rights reserved.
 //
 
-#import <CocoaLumberjack/CocoaLumberjack.h>
+#import <CocoaLumberjack/DDLog.h>
 #import "CoreDataViewCollectionController.h"
 #import "CoreDataViewsCollectionLogging.h"
 #import "CoreDataCollectionSectionChange.h"

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Kacper Kawecki. All rights reserved.
 //
 
-#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "CoreDataMultiTableViewController.h"
 #import "CoreDataViewsCollectionLogging.h"
+#import "DDLog.h"
 
 @interface CoreDataMultiTableViewController ()
 

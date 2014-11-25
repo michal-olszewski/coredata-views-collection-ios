@@ -52,7 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		38E49AB326F94CF69B25799B /* Pods-CoreData-Views-Collection-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreData-Views-Collection-ios.xcconfig"; path = "Pods/Pods-CoreData-Views-Collection-ios.xcconfig"; sourceTree = "<group>"; };
+		092EF1CBFDDA2687BA669707 /* Pods-CoreData-Views-Collection-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreData-Views-Collection-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreData-Views-Collection-ios/Pods-CoreData-Views-Collection-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		55043F0E195B6B8E005543BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		55043F10195B7120005543BC /* CoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionViewController.h"; sourceTree = SOURCE_ROOT; };
 		55043F11195B7120005543BC /* CoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionViewController.m"; sourceTree = SOURCE_ROOT; };
@@ -86,6 +86,7 @@
 		55DA2BC1196F3D8000346AA0 /* UIViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewUtils.h; path = Classes/UIViewUtils.h; sourceTree = "<group>"; };
 		55DA2BC2196F3D8000346AA0 /* UIViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewUtils.m; path = Classes/UIViewUtils.m; sourceTree = "<group>"; };
 		6B7B41BC25FB4708B8A0EAC5 /* libPods-CoreData-Views-Collection-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoreData-Views-Collection-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E77506BD9651436197E65D83 /* Pods-CoreData-Views-Collection-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreData-Views-Collection-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreData-Views-Collection-ios/Pods-CoreData-Views-Collection-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +147,7 @@
 				55AEDC33195B695D00711B85 /* CoreData-Views-Collection-iosTests */,
 				55AEDC1C195B695D00711B85 /* Frameworks */,
 				55AEDC1B195B695D00711B85 /* Products */,
-				38E49AB326F94CF69B25799B /* Pods-CoreData-Views-Collection-ios.xcconfig */,
+				8E211AC02818D9FD0EC6153D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -219,6 +220,15 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
+		8E211AC02818D9FD0EC6153D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				092EF1CBFDDA2687BA669707 /* Pods-CoreData-Views-Collection-ios.debug.xcconfig */,
+				E77506BD9651436197E65D83 /* Pods-CoreData-Views-Collection-ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -278,6 +288,8 @@
 			mainGroup = 55AEDC11195B695D00711B85;
 			productRefGroup = 55AEDC1B195B695D00711B85 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+			);
 			projectRoot = "";
 			targets = (
 				55AEDC19195B695D00711B85 /* CoreData-Views-Collection-ios */,
@@ -325,7 +337,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-CoreData-Views-Collection-ios-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoreData-Views-Collection-ios/Pods-CoreData-Views-Collection-ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -448,7 +460,7 @@
 		};
 		55AEDC3E195B695D00711B85 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38E49AB326F94CF69B25799B /* Pods-CoreData-Views-Collection-ios.xcconfig */;
+			baseConfigurationReference = 092EF1CBFDDA2687BA669707 /* Pods-CoreData-Views-Collection-ios.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/CoreData_Views_Collection_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -462,7 +474,7 @@
 		};
 		55AEDC3F195B695D00711B85 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38E49AB326F94CF69B25799B /* Pods-CoreData-Views-Collection-ios.xcconfig */;
+			baseConfigurationReference = E77506BD9651436197E65D83 /* Pods-CoreData-Views-Collection-ios.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/CoreData_Views_Collection_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -46,7 +46,7 @@
         canScroll = ([self tableView:self.tableView numberOfRowsInSection:0] > 0);
     }
     if (canScroll) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:animated];
     }
 }
 

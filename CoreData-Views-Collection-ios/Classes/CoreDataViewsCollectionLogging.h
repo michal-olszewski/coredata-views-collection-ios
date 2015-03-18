@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 GenieBelt. All rights reserved.
 //
 
-#import <CocoaLumberjack/DDLog.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 #ifndef GeniePlanner_CoreDataViewsCollectionLogging_h
 #define GeniePlanner_CoreDataViewsCollectionLogging_h
 
-static const int ddLogLevel = LOG_LEVEL_ERROR;
+static DDLogLevel ddLogLevel = DDLogLevelError;
 
 #endif

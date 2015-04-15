@@ -242,21 +242,23 @@
 }
 
 - (void)updateFromQueue {
-    if (self.throttleQueue.count > 0 && self.fetchedResultsController) {
-        self.updateAnimationFinished = NO;
-        __weak __block CoreDataViewCollectionController *coreDataViewCollectionController = self;
-        [self.collectionView performBatchUpdates:^{
-            for (CoreDataCollectionChange *change in [coreDataViewCollectionController.throttleQueue firstObject][@"changes"]) {
-                [change performChangeOnView:coreDataViewCollectionController.collectionView];
-            }
-            coreDataViewCollectionController.sectionCountCache = [coreDataViewCollectionController.throttleQueue firstObject][@"sections"];
-            coreDataViewCollectionController.itemsCountCache = [coreDataViewCollectionController.throttleQueue firstObject][@"items"];
-            [coreDataViewCollectionController.throttleQueue removeObject:[coreDataViewCollectionController.throttleQueue firstObject]];
-        }                             completion:^(BOOL finished) {
-            coreDataViewCollectionController.updateAnimationFinished = YES;
-            [coreDataViewCollectionController updateFromQueue];
-            DDLogInfo(@"Collection view updated with %d", finished);
-        }];
+    @synchronized (self) {
+        if (self.throttleQueue.count > 0 && self.fetchedResultsController) {
+            self.updateAnimationFinished = NO;
+            __weak __block CoreDataViewCollectionController *coreDataViewCollectionController = self;
+            [self.collectionView performBatchUpdates:^{
+                for (CoreDataCollectionChange *change in [coreDataViewCollectionController.throttleQueue firstObject][@"changes"]) {
+                    [change performChangeOnView:coreDataViewCollectionController.collectionView];
+                }
+                coreDataViewCollectionController.sectionCountCache = [coreDataViewCollectionController.throttleQueue firstObject][@"sections"];
+                coreDataViewCollectionController.itemsCountCache = [coreDataViewCollectionController.throttleQueue firstObject][@"items"];
+                [coreDataViewCollectionController.throttleQueue removeObject:[coreDataViewCollectionController.throttleQueue firstObject]];
+            }                             completion:^(BOOL finished) {
+                coreDataViewCollectionController.updateAnimationFinished = YES;
+                [coreDataViewCollectionController updateFromQueue];
+                DDLogInfo(@"Collection view updated with %d", finished);
+            }];
+        }
     }
 }
 

@@ -22,7 +22,11 @@
             [collectionView reloadItemsAtIndexPaths:@[self.indexPath]];
             break;
         case NSFetchedResultsChangeMove:
-            [collectionView moveItemAtIndexPath:self.indexPath toIndexPath:self.secondIndexPath];
+            if ([self.indexPath isEqual:self.secondIndexPath]) {
+                [collectionView reloadItemsAtIndexPaths:@[self.indexPath]];
+            } else {
+                [collectionView moveItemAtIndexPath:self.indexPath toIndexPath:self.secondIndexPath];
+            }
             break;
     }
 

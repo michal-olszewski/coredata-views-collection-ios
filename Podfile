@@ -5,6 +5,7 @@ source 'https://github.com/michal-olszewski/Specs.git'
 inhibit_all_warnings!
 
 target "CoreData-Views-Collection-ios" do
+  project "CoreData-Views-Collection-ios.xcodeproj"
   pod 'CocoaLumberjack'
 end
 

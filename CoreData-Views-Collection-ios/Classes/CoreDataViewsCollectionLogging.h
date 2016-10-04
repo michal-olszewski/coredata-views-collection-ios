@@ -7,7 +7,6 @@
 //
 
 #import <CocoaLumberjack/CocoaLumberjack.h>
-#import "DDLog.h"
 
 #ifndef GeniePlanner_CoreDataViewsCollectionLogging_h
 #define GeniePlanner_CoreDataViewsCollectionLogging_h

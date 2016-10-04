@@ -6,11 +6,10 @@
 //  Copyright (c) 2012 Kacper Kawecki. All rights reserved.
 //
 
-#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "CoreDataCollectionViewController.h"
-#import "CoreDataViewsCollectionLogging.h"
 #import "CoreDataCollectionSectionChange.h"
 #import "CoreDataCollectionObjectChange.h"
+#import "CoreDataViewsCollectionLogging.h"
 
 @interface CoreDataCollectionViewController ()
 
@@ -241,7 +240,7 @@
     if (!self.throttleQueue) {
         self.throttleQueue = [[NSMutableArray alloc] init];
     }
-    [self.throttleQueue addObject:@{@"changes" : array, @"sections" : [self getCurrentSectionCount], @"items" : [self getCurrentItemCounts]}];
+    [self.throttleQueue addObject:@{@"changes": array, @"sections": [self getCurrentSectionCount], @"items": [self getCurrentItemCounts]}];
 }
 
 - (void)updateFromQueue {

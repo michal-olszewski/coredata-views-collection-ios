@@ -10,6 +10,7 @@
 #import "CoreDataViewCollectionController.h"
 #import "CoreDataCollectionSectionChange.h"
 #import "CoreDataCollectionObjectChange.h"
+#import "CoreDataViewsCollectionLogging.h"
 
 @interface CoreDataViewCollectionController ()
 

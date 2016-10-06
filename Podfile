@@ -10,6 +10,7 @@ target "CoreData-Views-Collection-ios" do
 end
 
 target "CoreData-Views-Collection-iosTests" do
-
+  project "CoreData-Views-Collection-ios.xcodeproj"
+  pod 'CocoaLumberjack'
 end
 

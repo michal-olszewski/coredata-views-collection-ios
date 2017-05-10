@@ -11,9 +11,8 @@
 		448556154A0ACE95BCAB1157 /* libPods-CoreData-Views-Collection-iosTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC675583C7AB419E2035A485 /* libPods-CoreData-Views-Collection-iosTests.a */; };
 		55043F0F195B6B8E005543BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55043F0E195B6B8E005543BC /* UIKit.framework */; };
 		55043F1C195B7120005543BC /* CoreDataMultiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F13195B7120005543BC /* CoreDataMultiTableViewController.m */; };
-		55043F1D195B7120005543BC /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F15195B7120005543BC /* CoreDataTableViewController.m */; };
 		55043F1E195B7120005543BC /* CoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F17195B7120005543BC /* CoreDataCollectionViewController.m */; };
-		55043F1F195B7120005543BC /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F19195B7120005543BC /* CoreDataViewController.m */; };
+		55043F1F195B7120005543BC /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F19195B7120005543BC /* CoreDataTableViewController.m */; };
 		55AEDC1E195B695D00711B85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC1D195B695D00711B85 /* Foundation.framework */; };
 		55AEDC2C195B695D00711B85 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC2B195B695D00711B85 /* XCTest.framework */; };
 		55AEDC2D195B695D00711B85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC1D195B695D00711B85 /* Foundation.framework */; };
@@ -60,12 +59,10 @@
 		55043F0E195B6B8E005543BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		55043F12195B7120005543BC /* CoreDataMultiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataMultiTableViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataMultiTableViewController.h"; sourceTree = SOURCE_ROOT; };
 		55043F13195B7120005543BC /* CoreDataMultiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataMultiTableViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataMultiTableViewController.m"; sourceTree = SOURCE_ROOT; };
-		55043F14195B7120005543BC /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataTableViewController.h"; sourceTree = SOURCE_ROOT; };
-		55043F15195B7120005543BC /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataTableViewController.m"; sourceTree = SOURCE_ROOT; };
 		55043F16195B7120005543BC /* CoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionViewController.h"; sourceTree = SOURCE_ROOT; };
 		55043F17195B7120005543BC /* CoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionViewController.m"; sourceTree = SOURCE_ROOT; };
-		55043F18195B7120005543BC /* CoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataViewController.h"; sourceTree = SOURCE_ROOT; };
-		55043F19195B7120005543BC /* CoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataViewController.m"; sourceTree = SOURCE_ROOT; };
+		55043F18195B7120005543BC /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataTableViewController.h"; sourceTree = SOURCE_ROOT; };
+		55043F19195B7120005543BC /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataTableViewController.m"; sourceTree = SOURCE_ROOT; };
 		55043F1A195B7120005543BC /* CoreDataViewsCollectionLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewsCollectionLogging.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataViewsCollectionLogging.h"; sourceTree = SOURCE_ROOT; };
 		557CA5BD1DA52BDE004FF705 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "../../../../Library/Developer/Xcode/DerivedData/CoreData-Views-Collection-ios-fhgwwdrrsjargkfjzmbzmovkvdci/Build/Products/Debug-iphonesimulator/CocoaLumberjack/libCocoaLumberjack.a"; sourceTree = "<group>"; };
 		557CA5BF1DA5444E004FF705 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "../../../../Library/Developer/Xcode/DerivedData/CoreData-Views-Collection-ios-fhgwwdrrsjargkfjzmbzmovkvdci/Build/Products/Release-iphonesimulator/CocoaLumberjack/libCocoaLumberjack.a"; sourceTree = "<group>"; };
@@ -131,12 +128,10 @@
 				55D35759197C77EE004A4B4F /* CoreDataCollectionSectionChange.m */,
 				55043F12195B7120005543BC /* CoreDataMultiTableViewController.h */,
 				55043F13195B7120005543BC /* CoreDataMultiTableViewController.m */,
-				55043F14195B7120005543BC /* CoreDataTableViewController.h */,
-				55043F15195B7120005543BC /* CoreDataTableViewController.m */,
 				55043F16195B7120005543BC /* CoreDataCollectionViewController.h */,
 				55043F17195B7120005543BC /* CoreDataCollectionViewController.m */,
-				55043F18195B7120005543BC /* CoreDataViewController.h */,
-				55043F19195B7120005543BC /* CoreDataViewController.m */,
+				55043F18195B7120005543BC /* CoreDataTableViewController.h */,
+				55043F19195B7120005543BC /* CoreDataTableViewController.m */,
 				55043F1A195B7120005543BC /* CoreDataViewsCollectionLogging.h */,
 			);
 			name = Classes;
@@ -405,9 +400,8 @@
 				55DA2BC3196F3D8000346AA0 /* UIView+FindFirstResponder.m in Sources */,
 				55D3575A197C77EE004A4B4F /* CoreDataCollectionChange.m in Sources */,
 				55DA2BC4196F3D8000346AA0 /* UIViewUtils.m in Sources */,
-				55043F1D195B7120005543BC /* CoreDataTableViewController.m in Sources */,
 				55D3575C197C77EE004A4B4F /* CoreDataCollectionSectionChange.m in Sources */,
-				55043F1F195B7120005543BC /* CoreDataViewController.m in Sources */,
+				55043F1F195B7120005543BC /* CoreDataTableViewController.m in Sources */,
 				55043F1E195B7120005543BC /* CoreDataCollectionViewController.m in Sources */,
 				55D3575B197C77EE004A4B4F /* CoreDataCollectionObjectChange.m in Sources */,
 			);

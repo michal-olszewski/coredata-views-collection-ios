@@ -1,5 +1,5 @@
 //
-//  CoreDataViewController.h
+//  CoreDataTableViewController.h
 //  QuickInspect
 //
 //  Created by Kacper Kawecki on 12/19/12.
@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface CoreDataTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
-
+@interface CoreDataTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 // The controller (this class fetches nothing if this is not set).
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic) SEL entityTitleSelector;
@@ -27,6 +26,9 @@
 
 - (void)scrollToTopAnimated:(BOOL)animated;
 
+- (void)reloadData;
+
+
 // Turn this on before making any changes in the managed object context that
 //  are a one-for-one result of the user manipulating rows directly in the table view.
 // Such changes cause the context to report them (after a brief delay),
@@ -41,10 +43,12 @@
 // It is not necessary (in fact, not desirable) to set this during row deletion or insertion
 //  (but definitely for row moves).
 @property(nonatomic) BOOL suspendAutomaticTrackingOfChangesInManagedObjectContext;
-
+@property(nonatomic) BOOL autoUpdateTitle;
+@property(nonatomic, strong) UITableView *tableView;
 // Set to YES to get some debugging output in the console.
 @property BOOL debug;
-@property(nonatomic) int beganUpdates;
+
+@property(atomic) int beganUpdates;
 
 @property(nonatomic) UITableViewRowAnimation updateAnimation;
 @end

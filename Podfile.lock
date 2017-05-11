@@ -1,19 +1,23 @@
 PODS:
-  - CocoaLumberjack (3.0.0):
-    - CocoaLumberjack/Default (= 3.0.0)
-    - CocoaLumberjack/Extensions (= 3.0.0)
-  - CocoaLumberjack/Core (3.0.0)
-  - CocoaLumberjack/Default (3.0.0):
-    - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (3.0.0):
+  - CocoaLumberjack (3.2.0):
+    - CocoaLumberjack/Default (= 3.2.0)
+    - CocoaLumberjack/Extensions (= 3.2.0)
+  - CocoaLumberjack/Default (3.2.0)
+  - CocoaLumberjack/Extensions (3.2.0):
     - CocoaLumberjack/Default
+  - DateTools (2.0.0)
+  - Gb-Gantt (0.1.18):
+    - DateTools
 
 DEPENDENCIES:
   - CocoaLumberjack
+  - Gb-Gantt
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
+  CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
+  DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
+  Gb-Gantt: a94a8678849142fb837b8889ca88cde1aa92b92a
 
-PODFILE CHECKSUM: 6ff80316cae763bbd3e826123d010fc6b0b4dae3
+PODFILE CHECKSUM: ce7a9d5f0826495b19852c38e7165427342b17bd
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.1

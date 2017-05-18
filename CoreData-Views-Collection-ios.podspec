@@ -20,4 +20,5 @@ Pod::Spec.new do |s|
 
   s.framework  = "CoreData", "UIKit", "Foundation"
   s.dependency 'CocoaLumberjack'
+  s.dependency 'Gb-Gantt'
 end

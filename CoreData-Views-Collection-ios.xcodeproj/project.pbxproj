@@ -598,17 +598,6 @@
 				DSTROOT = /tmp/CoreData_Views_Collection_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreData-Views-Collection-ios/CoreData-Views-Collection-ios-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"/**",
-					"\"${PODS_ROOT}/CocoaLumberjack\"/**",
-					"\"${PODS_ROOT}/DateTools\"/**",
-					"\"${PODS_ROOT}/Gb-Gantt\"/**",
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
@@ -622,17 +611,6 @@
 				DSTROOT = /tmp/CoreData_Views_Collection_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreData-Views-Collection-ios/CoreData-Views-Collection-ios-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"/**",
-					"\"${PODS_ROOT}/CocoaLumberjack\"/**",
-					"\"${PODS_ROOT}/DateTools\"/**",
-					"\"${PODS_ROOT}/Gb-Gantt\"/**",
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";

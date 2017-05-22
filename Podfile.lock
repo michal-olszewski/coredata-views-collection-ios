@@ -6,7 +6,7 @@ PODS:
   - CocoaLumberjack/Extensions (3.2.0):
     - CocoaLumberjack/Default
   - DateTools (2.0.0)
-  - Gb-Gantt (0.1.18):
+  - Gb-Gantt (0.1.19):
     - DateTools
 
 DEPENDENCIES:
@@ -16,7 +16,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
-  Gb-Gantt: a94a8678849142fb837b8889ca88cde1aa92b92a
+  Gb-Gantt: 80ae839d0406732c07aee77767a5c5ab6708ec2f
 
 PODFILE CHECKSUM: ce7a9d5f0826495b19852c38e7165427342b17bd
 

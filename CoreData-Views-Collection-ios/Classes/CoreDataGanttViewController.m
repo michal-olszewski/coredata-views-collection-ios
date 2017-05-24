@@ -108,7 +108,6 @@
         if (newFetchedResultsController) {
             __weak __block CoreDataGanttViewController *coreDataGanttViewController = self;
             [self waitForUpdateEndAndPerformBlock:^{
-                [coreDataGanttViewController scrollToOriginAnimated:NO];
                 oldFetchedResultsController.delegate = nil;
                 _fetchedResultsController = newFetchedResultsController;
                 newFetchedResultsController.delegate = coreDataGanttViewController;

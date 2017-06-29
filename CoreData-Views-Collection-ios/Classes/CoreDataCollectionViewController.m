@@ -212,11 +212,26 @@
             newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item + 1 inSection:indexPath.section];
         }
     }
+    NSMutableArray *obsoleteChanges = [[NSMutableArray alloc] init];
+    BOOL shouldCancelChange = NO;
+    for (CoreDataCollectionObjectChange *existingChange in self.updatesCache) {
+        if (existingChange.changeType == NSFetchedResultsChangeUpdate && type == NSFetchedResultsChangeMove) {
+            if ([existingChange.indexPath isEqual:newIndexPath]) {
+                [obsoleteChanges addObject:existingChange];
+            }
+        } else if (existingChange.changeType == NSFetchedResultsChangeMove && type == NSFetchedResultsChangeUpdate) {
+            if ([existingChange.secondIndexPath isEqual:indexPath]) {
+                shouldCancelChange = YES;
+            }
+        }
+    }
+    [self.updatesCache removeObjectsInArray:obsoleteChanges];
+
     CoreDataCollectionObjectChange *change = [[CoreDataCollectionObjectChange alloc] init];
     change.indexPath = indexPath;
     change.secondIndexPath = newIndexPath;
     change.changeType = type;
-    if ([self.updatesCache indexOfObject:change] == NSNotFound) {
+    if ([self.updatesCache indexOfObject:change] == NSNotFound && !shouldCancelChange) {
         [self.updatesCache addObject:change];
     }
 }

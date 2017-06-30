@@ -595,6 +595,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1938214379969C494AF5186E /* Pods-CoreData-Views-Collection-ios.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				DSTROOT = /tmp/CoreData_Views_Collection_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreData-Views-Collection-ios/CoreData-Views-Collection-ios-Prefix.pch";
@@ -608,6 +609,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 38E1144F220624E65582ABAD /* Pods-CoreData-Views-Collection-ios.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				DSTROOT = /tmp/CoreData_Views_Collection_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreData-Views-Collection-ios/CoreData-Views-Collection-ios-Prefix.pch";

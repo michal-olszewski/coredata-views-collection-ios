@@ -7,7 +7,6 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "GbGanttDataSource.h"
-#import "GbGanttDelegate.h"
 
 
 @interface CoreDataGanttViewController : UIViewController <GbGanttDataSource, NSFetchedResultsControllerDelegate>

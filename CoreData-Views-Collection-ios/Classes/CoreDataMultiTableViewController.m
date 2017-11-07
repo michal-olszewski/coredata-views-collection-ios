@@ -8,7 +8,6 @@
 
 #import "CoreDataMultiTableViewController.h"
 #import "CoreDataViewsCollectionLogging.h"
-#import <CocoaLumberjack/CocoaLumberjack.h>
 
 @interface CoreDataMultiTableViewController ()
 

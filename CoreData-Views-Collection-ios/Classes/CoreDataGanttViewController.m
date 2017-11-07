@@ -4,8 +4,9 @@
 //
 
 #import "CoreDataGanttViewController.h"
-#import "GbGanttView.h"
 #import "CoreDataViewsCollectionLogging.h"
+
+@import Gb_Gantt.GbGanttView;
 
 
 @interface CoreDataGanttViewController ()

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 GenieBelt. All rights reserved.
 //
 
-#import <CocoaLumberjack/CocoaLumberjack.h>
-#import "DDLog.h"
+@import CocoaLumberjack.CocoaLumberjack;
+@import CocoaLumberjack.DDLog;
 
 #ifndef GeniePlanner_CoreDataViewsCollectionLogging_h
 #define GeniePlanner_CoreDataViewsCollectionLogging_h

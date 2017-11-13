@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19B6558E39BD5826C487A316 /* libPods-CoreData-Views-Collection-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3CD912828503DE5893C022 /* libPods-CoreData-Views-Collection-ios.a */; };
-		448556154A0ACE95BCAB1157 /* libPods-CoreData-Views-Collection-iosTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC675583C7AB419E2035A485 /* libPods-CoreData-Views-Collection-iosTests.a */; };
+		454AF450E9A8DD8B4FC7AEEF /* Pods_CoreData_Views_Collection_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B94BE226C42BB6A98656EF /* Pods_CoreData_Views_Collection_iosTests.framework */; };
 		55043F0F195B6B8E005543BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55043F0E195B6B8E005543BC /* UIKit.framework */; };
 		55043F1C195B7120005543BC /* CoreDataMultiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F13195B7120005543BC /* CoreDataMultiTableViewController.m */; };
 		55043F1E195B7120005543BC /* CoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F17195B7120005543BC /* CoreDataCollectionViewController.m */; };
@@ -27,6 +26,7 @@
 		55D3575C197C77EE004A4B4F /* CoreDataCollectionSectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D35759197C77EE004A4B4F /* CoreDataCollectionSectionChange.m */; };
 		55DA2BC3196F3D8000346AA0 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DA2BC0196F3D8000346AA0 /* UIView+FindFirstResponder.m */; };
 		55DA2BC4196F3D8000346AA0 /* UIViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DA2BC2196F3D8000346AA0 /* UIViewUtils.m */; };
+		DA2506CB2FA2C01AE4B92D1E /* Pods_CoreData_Views_Collection_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAB6715389E3B2B0E49E69B /* Pods_CoreData_Views_Collection_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,6 @@
 /* Begin PBXFileReference section */
 		049BC600DCBD5D999D5B0442 /* Pods-CoreData-Views-Collection-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreData-Views-Collection-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreData-Views-Collection-iosTests/Pods-CoreData-Views-Collection-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		1938214379969C494AF5186E /* Pods-CoreData-Views-Collection-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreData-Views-Collection-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreData-Views-Collection-ios/Pods-CoreData-Views-Collection-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		1D3CD912828503DE5893C022 /* libPods-CoreData-Views-Collection-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoreData-Views-Collection-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38E1144F220624E65582ABAD /* Pods-CoreData-Views-Collection-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreData-Views-Collection-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreData-Views-Collection-ios/Pods-CoreData-Views-Collection-ios.release.xcconfig"; sourceTree = "<group>"; };
 		4C6D3C642E1FA23014FBB1A5 /* Pods-CoreData-Views-Collection-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreData-Views-Collection-iosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreData-Views-Collection-iosTests/Pods-CoreData-Views-Collection-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		55043F0E195B6B8E005543BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -89,7 +88,8 @@
 		55DA2BC0196F3D8000346AA0 /* UIView+FindFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+FindFirstResponder.m"; path = "Classes/UIView+FindFirstResponder.m"; sourceTree = "<group>"; };
 		55DA2BC1196F3D8000346AA0 /* UIViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewUtils.h; path = Classes/UIViewUtils.h; sourceTree = "<group>"; };
 		55DA2BC2196F3D8000346AA0 /* UIViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewUtils.m; path = Classes/UIViewUtils.m; sourceTree = "<group>"; };
-		CC675583C7AB419E2035A485 /* libPods-CoreData-Views-Collection-iosTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoreData-Views-Collection-iosTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B94BE226C42BB6A98656EF /* Pods_CoreData_Views_Collection_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreData_Views_Collection_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAAB6715389E3B2B0E49E69B /* Pods_CoreData_Views_Collection_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreData_Views_Collection_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 				55043F0F195B6B8E005543BC /* UIKit.framework in Frameworks */,
 				55AEDC44195B698E00711B85 /* CoreData.framework in Frameworks */,
 				55AEDC1E195B695D00711B85 /* Foundation.framework in Frameworks */,
-				19B6558E39BD5826C487A316 /* libPods-CoreData-Views-Collection-ios.a in Frameworks */,
+				DA2506CB2FA2C01AE4B92D1E /* Pods_CoreData_Views_Collection_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +112,7 @@
 				55AEDC2F195B695D00711B85 /* UIKit.framework in Frameworks */,
 				55AEDC2D195B695D00711B85 /* Foundation.framework in Frameworks */,
 				55AEDC32195B695D00711B85 /* libCoreData-Views-Collection-ios.a in Frameworks */,
-				448556154A0ACE95BCAB1157 /* libPods-CoreData-Views-Collection-iosTests.a in Frameworks */,
+				454AF450E9A8DD8B4FC7AEEF /* Pods_CoreData_Views_Collection_iosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,8 +173,8 @@
 				55AEDC1D195B695D00711B85 /* Foundation.framework */,
 				55AEDC2B195B695D00711B85 /* XCTest.framework */,
 				55AEDC2E195B695D00711B85 /* UIKit.framework */,
-				1D3CD912828503DE5893C022 /* libPods-CoreData-Views-Collection-ios.a */,
-				CC675583C7AB419E2035A485 /* libPods-CoreData-Views-Collection-iosTests.a */,
+				DAAB6715389E3B2B0E49E69B /* Pods_CoreData_Views_Collection_ios.framework */,
+				63B94BE226C42BB6A98656EF /* Pods_CoreData_Views_Collection_iosTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -345,13 +345,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoreData-Views-Collection-ios-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		40A18A77F83940032C2AB015 /* [CP] Embed Pods Frameworks */ = {
@@ -360,9 +363,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CoreData-Views-Collection-iosTests/Pods-CoreData-Views-Collection-iosTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
+				"${BUILT_PRODUCTS_DIR}/Gb-Gantt/Gb_Gantt.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gb_Gantt.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -390,13 +400,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoreData-Views-Collection-iosTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8ABD86C03F0770AB5C7A9586 /* [CP] Check Pods Manifest.lock */ = {

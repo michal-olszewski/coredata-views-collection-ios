@@ -13,13 +13,6 @@
 
 @interface CoreDataCollectionViewController ()
 
-//@property(nonatomic) BOOL beganUpdates;
-@property(nonatomic) BOOL updateAnimationFinished;
-//@property(nonatomic) NSMutableArray *throttleQueue;
-//@property(nonatomic, strong) NSMutableArray *updatesCache;
-//@property(nonatomic, strong) NSNumber *sectionCountCache;
-//@property(nonatomic, strong) NSArray *itemsCountCache;
-
 @end
 
 @implementation CoreDataCollectionViewController
@@ -39,7 +32,6 @@
     if (self) {
         self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
-        self.updateAnimationFinished = YES;
     }
     return self;
 }
@@ -49,7 +41,6 @@
     if (self) {
         self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
-        self.updateAnimationFinished = YES;
     }
     return self;
 }
@@ -62,16 +53,6 @@
     }
     return self;
 }
-
-#pragma mark -
-#pragma mark setters and getters
-
-//- (NSMutableArray *)updatesCache {
-//    if (!_updatesCache) {
-//        _updatesCache = [NSMutableArray array];
-//    }
-//    return _updatesCache;
-//}
 
 #pragma mark -
 #pragma mark Fetching
@@ -88,7 +69,6 @@
             DDLogDebug(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
         }
     }
-//    [self clearThrottlingCaches];
     [self.collectionView reloadData];
 }
 
@@ -101,7 +81,6 @@
         oldFetchedResultsController.delegate = nil;
         _fetchedResultsController = newFetchedResultsController;
         newFetchedResultsController.delegate = self;
-//        self.updatesCache = nil;
         if (self.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:self.entityTitleSelector]) {
             if ((!self.title || [self.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector]]) && (!self.navigationController || !self.navigationItem.title)) {
                 self.title = [newFetchedResultsController.fetchRequest.entity performSelector:self.entityTitleSelector];
@@ -122,11 +101,7 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     NSInteger count;
-//    if (self.itemsCountCache) {
-//        count = [self.sectionCountCache integerValue];
-//    } else {
     count = [[self.fetchedResultsController sections] count];
-//    }
     if (count == 0 && (self.additionalCellAtTheBeginning || self.additionalCellAtTheEnd)) {
         count = 1;
     }
@@ -135,17 +110,9 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSUInteger sectionCount;
-//    if (self.sectionCountCache) {
-//        sectionCount = (NSUInteger) [self.sectionCountCache integerValue];
-//    } else {
     sectionCount = [[self.fetchedResultsController sections] count];
-//    }
     NSUInteger itemCount;
-//    if (self.itemsCountCache) {
-//        itemCount = (NSUInteger) [self.itemsCountCache[(NSUInteger) section] integerValue];
-//    } else {
     itemCount = [[self.fetchedResultsController sections][(NSUInteger) section] numberOfObjects];
-//    }
     if (self.additionalCellAtTheBeginning) {
         if (section == 0) {
             if (sectionCount == 0) {
@@ -169,12 +136,6 @@
 #pragma mark -
 #pragma mark FetchedResultsController Delegate
 
-//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-//    if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
-//        self.beganUpdates = YES;
-//    }
-//}
-
 - (void)controller:(NSFetchedResultsController *)controller
   didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex
@@ -194,8 +155,6 @@
             change = [[CoreDataCollectionSectionChange alloc] init];
             change.changeType = type;
             change.index = sectionIndex;
-//            if ([self.updatesCache indexOfObject:change] == NSNotFound)
-//                [self.updatesCache addObject:change];
             break;
     }
 }
@@ -217,31 +176,7 @@
     change.indexPath = indexPath;
     change.secondIndexPath = newIndexPath;
     change.changeType = type;
-//    if ([self.updatesCache indexOfObject:change] == NSNotFound) {
-//        [self.updatesCache addObject:change];
-//    }
 }
-
-//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-//    if (self.beganUpdates) {
-//        self.beganUpdates = NO;
-//    }
-////    if (!self.suspendAutomaticTrackingOfChangesInManagedObjectContext) {
-////        [self updateFromThrottle];
-////    }
-//}
-
-//- (void)endSuspensionOfUpdatesDueToContextChanges {
-//    _suspendAutomaticTrackingOfChangesInManagedObjectContext = NO;
-//}
-//
-//- (void)setSuspendAutomaticTrackingOfChangesInManagedObjectContext:(BOOL)suspend {
-//    if (suspend) {
-//        _suspendAutomaticTrackingOfChangesInManagedObjectContext = YES;
-//    } else {
-//        [self performSelector:@selector(endSuspensionOfUpdatesDueToContextChanges) withObject:@0 afterDelay:0];
-//    }
-//}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
@@ -253,62 +188,5 @@
     _collectionView.dataSource = nil;
     _collectionView.delegate = nil;
 }
-
-#pragma mark -
-#pragma mark Throttling
-
-//- (void)clearThrottlingCaches {
-//    self.updatesCache = nil;
-//    self.sectionCountCache = nil;
-//    self.itemsCountCache = nil;
-//}
-
-//- (void)updateFromThrottle {
-//    [self addToQueue:self.updatesCache];
-//    self.updatesCache = nil;
-//    if (self.updateAnimationFinished) {
-//        [self updateFromQueue];
-//    }
-//}
-
-- (NSNumber *)getCurrentSectionCount {
-    return @([[self.fetchedResultsController sections] count]);
-}
-
-- (NSArray *)getCurrentItemCounts {
-    NSMutableArray *result = [NSMutableArray array];
-    for (int i = 0; i < [self.fetchedResultsController sections].count; i++) {
-        [result addObject:@([[self.fetchedResultsController sections][(NSUInteger) i] numberOfObjects])];
-    }
-    return result;
-}
-
-//- (void)addToQueue:(NSMutableArray *)array {
-//    if (!self.throttleQueue) {
-//        self.throttleQueue = [[NSMutableArray alloc] init];
-//    }
-//    [self.throttleQueue addObject:@{@"changes": array, @"sections": [self getCurrentSectionCount], @"items": [self getCurrentItemCounts]}];
-//}
-//
-//- (void)updateFromQueue {
-//    @synchronized (self) {
-//        if (self.throttleQueue.count > 0 && self.fetchedResultsController) {
-//            self.updateAnimationFinished = NO;
-//            __weak __block CoreDataCollectionViewController *coreDataViewCollectionController = self;
-//            [self.collectionView performBatchUpdates:^{
-//                for (CoreDataCollectionChange *change in [coreDataViewCollectionController.throttleQueue firstObject][@"changes"]) {
-//                    [change performChangeOnView:coreDataViewCollectionController.collectionView];
-//                }
-//                coreDataViewCollectionController.sectionCountCache = [coreDataViewCollectionController.throttleQueue firstObject][@"sections"];
-//                coreDataViewCollectionController.itemsCountCache = [coreDataViewCollectionController.throttleQueue firstObject][@"items"];
-//                [coreDataViewCollectionController.throttleQueue removeObject:[coreDataViewCollectionController.throttleQueue firstObject]];
-//            }                             completion:^(BOOL finished) {
-//                coreDataViewCollectionController.updateAnimationFinished = YES;
-//                [coreDataViewCollectionController updateFromQueue];
-//                DDLogInfo(@"Collection view updated with %d", finished);
-//            }];
-//        }
-//    }
-//}
 
 @end

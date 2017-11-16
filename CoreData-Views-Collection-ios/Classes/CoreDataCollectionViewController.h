@@ -16,14 +16,11 @@
 
 // Set to YES to get some debugging output in the console.
 @property BOOL debug;
-@property(nonatomic) BOOL suspendAutomaticTrackingOfChangesInManagedObjectContext;
 
 @property(atomic) BOOL additionalCellAtTheBeginning;
 @property(atomic) BOOL additionalCellAtTheEnd;
 
 @property(nonatomic) SEL entityTitleSelector;
-
-@property(atomic) BOOL throttleUpdates;
 
 - (void)performFetch;
 

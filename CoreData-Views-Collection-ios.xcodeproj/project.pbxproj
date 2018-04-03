@@ -12,6 +12,9 @@
 		55043F1C195B7120005543BC /* CoreDataMultiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F13195B7120005543BC /* CoreDataMultiTableViewController.m */; };
 		55043F1E195B7120005543BC /* CoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F17195B7120005543BC /* CoreDataCollectionViewController.m */; };
 		55043F1F195B7120005543BC /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55043F19195B7120005543BC /* CoreDataTableViewController.m */; };
+		551F777D2073CAFC003CCB37 /* CoreDataCollectionSectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 551F77772073CAFC003CCB37 /* CoreDataCollectionSectionChange.m */; };
+		551F777E2073CAFC003CCB37 /* CoreDataCollectionObjectChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 551F77792073CAFC003CCB37 /* CoreDataCollectionObjectChange.m */; };
+		551F777F2073CAFC003CCB37 /* CoreDataCollectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 551F777C2073CAFC003CCB37 /* CoreDataCollectionChange.m */; };
 		5552FE9D1ECE5FEF004B949F /* CoreDataGanttViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5552FE9C1ECE5FEF004B949F /* CoreDataGanttViewController.m */; };
 		55AEDC1E195B695D00711B85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC1D195B695D00711B85 /* Foundation.framework */; };
 		55AEDC2C195B695D00711B85 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC2B195B695D00711B85 /* XCTest.framework */; };
@@ -21,9 +24,6 @@
 		55AEDC38195B695D00711B85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55AEDC36195B695D00711B85 /* InfoPlist.strings */; };
 		55AEDC3A195B695D00711B85 /* CoreData_Views_Collection_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AEDC39195B695D00711B85 /* CoreData_Views_Collection_iosTests.m */; };
 		55AEDC44195B698E00711B85 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AEDC43195B698E00711B85 /* CoreData.framework */; };
-		55D3575A197C77EE004A4B4F /* CoreDataCollectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D35755197C77EE004A4B4F /* CoreDataCollectionChange.m */; };
-		55D3575B197C77EE004A4B4F /* CoreDataCollectionObjectChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D35757197C77EE004A4B4F /* CoreDataCollectionObjectChange.m */; };
-		55D3575C197C77EE004A4B4F /* CoreDataCollectionSectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D35759197C77EE004A4B4F /* CoreDataCollectionSectionChange.m */; };
 		55DA2BC3196F3D8000346AA0 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DA2BC0196F3D8000346AA0 /* UIView+FindFirstResponder.m */; };
 		55DA2BC4196F3D8000346AA0 /* UIViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DA2BC2196F3D8000346AA0 /* UIViewUtils.m */; };
 		DA2506CB2FA2C01AE4B92D1E /* Pods_CoreData_Views_Collection_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAB6715389E3B2B0E49E69B /* Pods_CoreData_Views_Collection_ios.framework */; };
@@ -64,6 +64,12 @@
 		55043F18195B7120005543BC /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataTableViewController.h"; sourceTree = SOURCE_ROOT; };
 		55043F19195B7120005543BC /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataTableViewController.m"; sourceTree = SOURCE_ROOT; };
 		55043F1A195B7120005543BC /* CoreDataViewsCollectionLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataViewsCollectionLogging.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataViewsCollectionLogging.h"; sourceTree = SOURCE_ROOT; };
+		551F77772073CAFC003CCB37 /* CoreDataCollectionSectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionSectionChange.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionSectionChange.m"; sourceTree = SOURCE_ROOT; };
+		551F77782073CAFC003CCB37 /* CoreDataCollectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionChange.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionChange.h"; sourceTree = SOURCE_ROOT; };
+		551F77792073CAFC003CCB37 /* CoreDataCollectionObjectChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionObjectChange.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionObjectChange.m"; sourceTree = SOURCE_ROOT; };
+		551F777A2073CAFC003CCB37 /* CoreDataCollectionSectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionSectionChange.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionSectionChange.h"; sourceTree = SOURCE_ROOT; };
+		551F777B2073CAFC003CCB37 /* CoreDataCollectionObjectChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionObjectChange.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionObjectChange.h"; sourceTree = SOURCE_ROOT; };
+		551F777C2073CAFC003CCB37 /* CoreDataCollectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionChange.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionChange.m"; sourceTree = SOURCE_ROOT; };
 		5552FE9B1ECE5FEF004B949F /* CoreDataGanttViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataGanttViewController.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataGanttViewController.h"; sourceTree = SOURCE_ROOT; };
 		5552FE9C1ECE5FEF004B949F /* CoreDataGanttViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataGanttViewController.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataGanttViewController.m"; sourceTree = SOURCE_ROOT; };
 		557CA5BD1DA52BDE004FF705 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "../../../../Library/Developer/Xcode/DerivedData/CoreData-Views-Collection-ios-fhgwwdrrsjargkfjzmbzmovkvdci/Build/Products/Debug-iphonesimulator/CocoaLumberjack/libCocoaLumberjack.a"; sourceTree = "<group>"; };
@@ -78,12 +84,6 @@
 		55AEDC37195B695D00711B85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55AEDC39195B695D00711B85 /* CoreData_Views_Collection_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData_Views_Collection_iosTests.m; sourceTree = "<group>"; };
 		55AEDC43195B698E00711B85 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		55D35754197C77EE004A4B4F /* CoreDataCollectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionChange.h; path = ../Classes/Changes/CoreDataCollectionChange.h; sourceTree = SOURCE_ROOT; };
-		55D35755197C77EE004A4B4F /* CoreDataCollectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionChange.m; path = ../Classes/Changes/CoreDataCollectionChange.m; sourceTree = SOURCE_ROOT; };
-		55D35756197C77EE004A4B4F /* CoreDataCollectionObjectChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionObjectChange.h; path = ../Classes/Changes/CoreDataCollectionObjectChange.h; sourceTree = SOURCE_ROOT; };
-		55D35757197C77EE004A4B4F /* CoreDataCollectionObjectChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionObjectChange.m; path = ../Classes/Changes/CoreDataCollectionObjectChange.m; sourceTree = SOURCE_ROOT; };
-		55D35758197C77EE004A4B4F /* CoreDataCollectionSectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionSectionChange.h; path = ../Classes/Changes/CoreDataCollectionSectionChange.h; sourceTree = SOURCE_ROOT; };
-		55D35759197C77EE004A4B4F /* CoreDataCollectionSectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionSectionChange.m; path = ../Classes/Changes/CoreDataCollectionSectionChange.m; sourceTree = SOURCE_ROOT; };
 		55DA2BBF196F3D8000346AA0 /* UIView+FindFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+FindFirstResponder.h"; path = "Classes/UIView+FindFirstResponder.h"; sourceTree = "<group>"; };
 		55DA2BC0196F3D8000346AA0 /* UIView+FindFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+FindFirstResponder.m"; path = "Classes/UIView+FindFirstResponder.m"; sourceTree = "<group>"; };
 		55DA2BC1196F3D8000346AA0 /* UIViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewUtils.h; path = Classes/UIViewUtils.h; sourceTree = "<group>"; };
@@ -141,12 +141,12 @@
 		551F776D2073C84A003CCB37 /* Changes */ = {
 			isa = PBXGroup;
 			children = (
-				55D35754197C77EE004A4B4F /* CoreDataCollectionChange.h */,
-				55D35755197C77EE004A4B4F /* CoreDataCollectionChange.m */,
-				55D35756197C77EE004A4B4F /* CoreDataCollectionObjectChange.h */,
-				55D35757197C77EE004A4B4F /* CoreDataCollectionObjectChange.m */,
-				55D35758197C77EE004A4B4F /* CoreDataCollectionSectionChange.h */,
-				55D35759197C77EE004A4B4F /* CoreDataCollectionSectionChange.m */,
+				551F77782073CAFC003CCB37 /* CoreDataCollectionChange.h */,
+				551F777C2073CAFC003CCB37 /* CoreDataCollectionChange.m */,
+				551F777B2073CAFC003CCB37 /* CoreDataCollectionObjectChange.h */,
+				551F77792073CAFC003CCB37 /* CoreDataCollectionObjectChange.m */,
+				551F777A2073CAFC003CCB37 /* CoreDataCollectionSectionChange.h */,
+				551F77772073CAFC003CCB37 /* CoreDataCollectionSectionChange.m */,
 			);
 			path = Changes;
 			sourceTree = "<group>";
@@ -506,13 +506,13 @@
 			files = (
 				55043F1C195B7120005543BC /* CoreDataMultiTableViewController.m in Sources */,
 				55DA2BC3196F3D8000346AA0 /* UIView+FindFirstResponder.m in Sources */,
-				55D3575A197C77EE004A4B4F /* CoreDataCollectionChange.m in Sources */,
 				55DA2BC4196F3D8000346AA0 /* UIViewUtils.m in Sources */,
 				5552FE9D1ECE5FEF004B949F /* CoreDataGanttViewController.m in Sources */,
-				55D3575C197C77EE004A4B4F /* CoreDataCollectionSectionChange.m in Sources */,
+				551F777E2073CAFC003CCB37 /* CoreDataCollectionObjectChange.m in Sources */,
+				551F777F2073CAFC003CCB37 /* CoreDataCollectionChange.m in Sources */,
+				551F777D2073CAFC003CCB37 /* CoreDataCollectionSectionChange.m in Sources */,
 				55043F1F195B7120005543BC /* CoreDataTableViewController.m in Sources */,
 				55043F1E195B7120005543BC /* CoreDataCollectionViewController.m in Sources */,
-				55D3575B197C77EE004A4B4F /* CoreDataCollectionObjectChange.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

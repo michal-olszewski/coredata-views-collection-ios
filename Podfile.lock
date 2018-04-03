@@ -1,23 +1,26 @@
 PODS:
-  - CocoaLumberjack (3.2.0):
-    - CocoaLumberjack/Default (= 3.2.0)
-    - CocoaLumberjack/Extensions (= 3.2.0)
-  - CocoaLumberjack/Default (3.2.0)
-  - CocoaLumberjack/Extensions (3.2.0):
+  - CocoaLumberjack (3.4.1):
+    - CocoaLumberjack/Default (= 3.4.1)
+    - CocoaLumberjack/Extensions (= 3.4.1)
+  - CocoaLumberjack/Default (3.4.1)
+  - CocoaLumberjack/Extensions (3.4.1):
     - CocoaLumberjack/Default
   - DateTools (2.0.0)
-  - Gb-Gantt (0.1.25):
+  - Gb-Gantt (0.1.28):
     - DateTools
+  - LifetimeTracker (1.3.3)
 
 DEPENDENCIES:
   - CocoaLumberjack
   - Gb-Gantt
+  - LifetimeTracker
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
+  CocoaLumberjack: 2e258a064cacc8eb9a2aca318e24d02a0a7fd56d
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
-  Gb-Gantt: c2cb08f013ae26d5965ed5d94f44bbde54963c15
+  Gb-Gantt: 7768f77e412464a3140c83ed9c43c72b6c6b94e7
+  LifetimeTracker: c4b2e213e2ee0c5a153d9472ae2e9e2337696ad5
 
-PODFILE CHECKSUM: b138d00e53db45f9b40106290cfb4567946dc3a1
+PODFILE CHECKSUM: d3a6c04daa37dc98f54a3fb3516418d9fb866c83
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0

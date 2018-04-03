@@ -78,12 +78,12 @@
 		55AEDC37195B695D00711B85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55AEDC39195B695D00711B85 /* CoreData_Views_Collection_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData_Views_Collection_iosTests.m; sourceTree = "<group>"; };
 		55AEDC43195B698E00711B85 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		55D35754197C77EE004A4B4F /* CoreDataCollectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionChange.h; sourceTree = SOURCE_ROOT; };
-		55D35755197C77EE004A4B4F /* CoreDataCollectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionChange.m; sourceTree = SOURCE_ROOT; };
-		55D35756197C77EE004A4B4F /* CoreDataCollectionObjectChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionObjectChange.h; sourceTree = SOURCE_ROOT; };
-		55D35757197C77EE004A4B4F /* CoreDataCollectionObjectChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionObjectChange.m; sourceTree = SOURCE_ROOT; };
-		55D35758197C77EE004A4B4F /* CoreDataCollectionSectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionSectionChange.h; sourceTree = SOURCE_ROOT; };
-		55D35759197C77EE004A4B4F /* CoreDataCollectionSectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionSectionChange.m; sourceTree = SOURCE_ROOT; };
+		55D35754197C77EE004A4B4F /* CoreDataCollectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionChange.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionChange.h"; sourceTree = SOURCE_ROOT; };
+		55D35755197C77EE004A4B4F /* CoreDataCollectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionChange.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionChange.m"; sourceTree = SOURCE_ROOT; };
+		55D35756197C77EE004A4B4F /* CoreDataCollectionObjectChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionObjectChange.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionObjectChange.h"; sourceTree = SOURCE_ROOT; };
+		55D35757197C77EE004A4B4F /* CoreDataCollectionObjectChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionObjectChange.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionObjectChange.m"; sourceTree = SOURCE_ROOT; };
+		55D35758197C77EE004A4B4F /* CoreDataCollectionSectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCollectionSectionChange.h; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionSectionChange.h"; sourceTree = SOURCE_ROOT; };
+		55D35759197C77EE004A4B4F /* CoreDataCollectionSectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCollectionSectionChange.m; path = "CoreData-Views-Collection-ios/Classes/CoreDataCollectionSectionChange.m"; sourceTree = SOURCE_ROOT; };
 		55DA2BBF196F3D8000346AA0 /* UIView+FindFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+FindFirstResponder.h"; path = "Classes/UIView+FindFirstResponder.h"; sourceTree = "<group>"; };
 		55DA2BC0196F3D8000346AA0 /* UIView+FindFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+FindFirstResponder.m"; path = "Classes/UIView+FindFirstResponder.m"; sourceTree = "<group>"; };
 		55DA2BC1196F3D8000346AA0 /* UIViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewUtils.h; path = Classes/UIViewUtils.h; sourceTree = "<group>"; };
@@ -119,24 +119,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A6B0020CACB1CA3706E2C2A /* Changes */ = {
+		55043EF8195B6A91005543BC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				55DA2BBE196F3D6800346AA0 /* Util */,
 				55D35754197C77EE004A4B4F /* CoreDataCollectionChange.h */,
 				55D35755197C77EE004A4B4F /* CoreDataCollectionChange.m */,
 				55D35756197C77EE004A4B4F /* CoreDataCollectionObjectChange.h */,
 				55D35757197C77EE004A4B4F /* CoreDataCollectionObjectChange.m */,
 				55D35758197C77EE004A4B4F /* CoreDataCollectionSectionChange.h */,
 				55D35759197C77EE004A4B4F /* CoreDataCollectionSectionChange.m */,
-			);
-			name = Changes;
-			sourceTree = "<group>";
-		};
-		55043EF8195B6A91005543BC /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				1A6B0020CACB1CA3706E2C2A /* Changes */,
-				55DA2BBE196F3D6800346AA0 /* Util */,
 				55043F12195B7120005543BC /* CoreDataMultiTableViewController.h */,
 				55043F13195B7120005543BC /* CoreDataMultiTableViewController.m */,
 				55043F16195B7120005543BC /* CoreDataCollectionViewController.h */,
@@ -375,14 +367,12 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
 				"${BUILT_PRODUCTS_DIR}/Gb-Gantt/Gb_Gantt.framework",
-				"${BUILT_PRODUCTS_DIR}/LifetimeTracker/LifetimeTracker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gb_Gantt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LifetimeTracker.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -9,13 +9,11 @@ target "CoreData-Views-Collection-ios" do
   project "CoreData-Views-Collection-ios.xcodeproj"
   pod 'CocoaLumberjack'
   pod 'Gb-Gantt'
-  pod 'LifetimeTracker'
 end
 
 target "CoreData-Views-Collection-iosTests" do
   project "CoreData-Views-Collection-ios.xcodeproj"
   pod 'CocoaLumberjack'
   pod 'Gb-Gantt'
-  pod 'LifetimeTracker'
 end
 

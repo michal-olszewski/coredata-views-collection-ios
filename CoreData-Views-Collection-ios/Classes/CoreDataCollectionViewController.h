@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "LifetimeTracker-Swift.h"
+
+@import LifetimeTracker;
 
 
 @interface CoreDataCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate, LifetimeTrackable>

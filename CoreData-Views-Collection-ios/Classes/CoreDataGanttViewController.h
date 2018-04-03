@@ -6,9 +6,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "LifetimeTracker-Swift.h"
 
 @import Gb_Gantt.GbGanttDataSource;
+
+@import LifetimeTracker;
 
 
 @interface CoreDataGanttViewController : UIViewController <GbGanttDataSource, NSFetchedResultsControllerDelegate, LifetimeTrackable>

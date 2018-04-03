@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
   s.requires_arc = true
-  s.swift_version = 4.0
+  s.swift_version = "4.0"
 
   s.source       = { :git => "git@github.com:michal-olszewski/coredata-views-collection-ios.git", :tag => "#{s.version}" }
   s.source_files  = "CoreData-Views-Collection-ios/Classes", "CoreData-Views-Collection-ios/Classes/**/*.{h,m}"

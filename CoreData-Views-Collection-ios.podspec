@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CoreData-Views-Collection-ios"
-  s.version      = "0.1.14"
+  s.version      = "0.1.15"
   s.summary      = "Collection of Core Data based Cocoa Touch views base classes"
   s.description  = <<-DESC
                    Cocoa Touch view controller classes based/inspired by Stanford CS193p examples
@@ -21,4 +21,5 @@ Pod::Spec.new do |s|
   s.framework  = "CoreData", "UIKit", "Foundation"
   s.dependency 'CocoaLumberjack'
   s.dependency 'Gb-Gantt'
+  s.dependency 'LifetimeTracker'
 end

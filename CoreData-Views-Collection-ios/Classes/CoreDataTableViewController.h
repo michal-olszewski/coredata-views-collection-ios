@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface CoreDataTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@import LifetimeTracker;
+
+
+@interface CoreDataTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, LifetimeTrackable>
 // The controller (this class fetches nothing if this is not set).
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic) SEL entityTitleSelector;

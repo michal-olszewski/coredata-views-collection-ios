@@ -31,6 +31,7 @@
         self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
     }
+    [self trackLifetime];
     return self;
 }
 
@@ -40,6 +41,7 @@
         self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
     }
+    [self trackLifetime];
     return self;
 }
 
@@ -49,7 +51,15 @@
         self.additionalCellAtTheBeginning = NO;
         self.additionalCellAtTheEnd = NO;
     }
+    [self trackLifetime];
     return self;
+}
+
+#pragma mark -
+#pragma mark - LifetimeConfiguration
+
++ (LifetimeConfiguration *)lifetimeConfiguration {
+    return [[LifetimeConfiguration alloc] initWithMaxCount:3 groupName:NSStringFromClass(self.class)];
 }
 
 #pragma mark -

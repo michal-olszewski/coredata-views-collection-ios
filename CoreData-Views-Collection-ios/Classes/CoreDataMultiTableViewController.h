@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface CoreDataMultiTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@import LifetimeTracker;
+
+
+@interface CoreDataMultiTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, LifetimeTrackable>
 
 // Causes the fetchedResultsController to re-fetch the data.
 // You almost certainly never need to call this.

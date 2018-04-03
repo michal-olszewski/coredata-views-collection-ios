@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface CoreDataCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate>
+@import LifetimeTracker;
+
+
+@interface CoreDataCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate, LifetimeTrackable>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(atomic, strong) UICollectionView *collectionView;

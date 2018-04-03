@@ -9,8 +9,10 @@
 
 @import Gb_Gantt.GbGanttDataSource;
 
+@import LifetimeTracker;
 
-@interface CoreDataGanttViewController : UIViewController <GbGanttDataSource, NSFetchedResultsControllerDelegate>
+
+@interface CoreDataGanttViewController : UIViewController <GbGanttDataSource, NSFetchedResultsControllerDelegate, LifetimeTrackable>
 
 // The controller (this class fetches nothing if this is not set).
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

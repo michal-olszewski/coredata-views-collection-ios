@@ -29,6 +29,40 @@
     return YES;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    [self trackLifetime];
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Custom initialization
+    }
+    [self trackLifetime];
+    return self;
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        // Custom initialization
+    }
+    [self trackLifetime];
+    return self;
+}
+
+#pragma mark -
+#pragma mark - LifetimeConfiguration
+
++ (LifetimeConfiguration *)lifetimeConfiguration {
+    return [[LifetimeConfiguration alloc] initWithMaxCount:3 groupName:NSStringFromClass(self.class)];
+}
+
 #pragma mark -
 #pragma mark - helpers
 

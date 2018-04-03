@@ -144,7 +144,7 @@
             __weak __block CoreDataGanttViewController *coreDataGanttViewController = self;
             [self waitForUpdateEndAndPerformBlock:^{
                 oldFetchedResultsController.delegate = nil;
-                _fetchedResultsController = newFetchedResultsController;
+                self->_fetchedResultsController = newFetchedResultsController;
                 newFetchedResultsController.delegate = coreDataGanttViewController;
                 if (coreDataGanttViewController.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:coreDataGanttViewController.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:coreDataGanttViewController.entityTitleSelector]) {
                     if (coreDataGanttViewController.autoUpdateTitle && (!coreDataGanttViewController.title || [coreDataGanttViewController.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:coreDataGanttViewController.entityTitleSelector]]) && (!coreDataGanttViewController.navigationController || !coreDataGanttViewController.navigationItem.title)) {

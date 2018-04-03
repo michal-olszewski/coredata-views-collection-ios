@@ -150,7 +150,7 @@
             [self waitForUpdateEndAndPerformBlock:^{
                 [coreDataViewController scrollToTopAnimated:NO];
                 oldFetchedResultsController.delegate = nil;
-                _fetchedResultsController = newFetchedResultsController;
+                self->_fetchedResultsController = newFetchedResultsController;
                 newFetchedResultsController.delegate = coreDataViewController;
                 if (coreDataViewController.entityTitleSelector && [oldFetchedResultsController.fetchRequest.entity respondsToSelector:coreDataViewController.entityTitleSelector] && [newFetchedResultsController.fetchRequest.entity respondsToSelector:coreDataViewController.entityTitleSelector]) {
                     if (coreDataViewController.autoUpdateTitle && (!coreDataViewController.title || [coreDataViewController.title isEqualToString:[oldFetchedResultsController.fetchRequest.entity performSelector:coreDataViewController.entityTitleSelector]]) && (!coreDataViewController.navigationController || !coreDataViewController.navigationItem.title)) {
